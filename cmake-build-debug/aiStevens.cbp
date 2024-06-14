@@ -85,13 +85,16 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Gen.c">
 			<Option target="aiStevens"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Interp.c">
-			<Option target="aiStevens"/>
-		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Main.c">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Misc.c">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Scan.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Stmt.c">
 			<Option target="aiStevens"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Tree.c">

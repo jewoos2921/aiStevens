@@ -25,8 +25,6 @@ static void usage(char *prog) {
 
 
 int main(int argc, char *argv[]) {
-    struct ASTNode *node;
-
 
     if (argc != 2)
         usage(argv[0]);
@@ -45,10 +43,9 @@ int main(int argc, char *argv[]) {
     }
 
     scan(&Token_);
-    node = binexpr(0);
-    printf("%d\n", interpretAST(node));
-    generateCode(node);
-
+    genPreamble();
+    statements();
+    genPostamble();
     fclose(OutFile_);
     return 0;
 }

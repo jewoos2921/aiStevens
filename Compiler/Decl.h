@@ -6,6 +6,7 @@
 
 int scan(struct Token *t_);
 
+// Tree.c
 struct ASTNode *makeASTNode(int op_,
                             struct ASTNode *left,
                             struct ASTNode *right_,
@@ -17,12 +18,18 @@ struct ASTNode *makeASTUnary(int op_,
                              struct ASTNode *left_,
                              int int_value_);
 
-struct ASTNode *binexpr(int rbp_);
+// Gen.c
+int genAST(struct ASTNode *node_);
 
-int interpretAST(struct ASTNode *node_);
+void genPreamble();
 
-void generateCode(struct ASTNode *node_);
+void genPostamble();
 
+void genFreeRegs();
+
+void genPrintInt(int reg_);
+
+// Cg.c
 void freeAllRegisters();
 
 void cgPreamble();
@@ -40,3 +47,14 @@ int cgMul(int r1_, int r2_);
 int cgDiv(int r1_, int r2_);
 
 void cgPrintInt(int r_);
+
+// Expr.c
+struct ASTNode *binexpr(int rbp_);
+
+// Stmt.c
+void statements();
+
+// Misc.c
+void match(int expected_, char *what_);
+
+void semi();

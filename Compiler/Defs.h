@@ -9,6 +9,9 @@
 #include <string.h>
 #include <ctype.h>
 
+
+#define TEXTLEN 512 // length of symbols in input
+
 // Tokens
 enum {
     T_EOF,
@@ -16,7 +19,9 @@ enum {
     T_MINUS,
     T_STAR,
     T_SLASH,
-    T_INTLIT
+    T_INTLIT,
+    T_SEMI,
+    T_PRINT,
 };
 
 struct Token {

@@ -8,11 +8,12 @@ add_executable(aiStevens
         Compiler/Main.c
         Compiler/Scan.c
         Compiler/Expr.c
-        Compiler/Interp.c
         Compiler/Tree.c
 #        Compiler/cg.c
         Compiler/Cg_x86_64.c
         Compiler/Gen.c
+        Compiler/Stmt.c
+        Compiler/Misc.c
         #        Compiler/Expr2.c
         #        data_element.c
         #        database.c

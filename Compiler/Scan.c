@@ -64,8 +64,43 @@ static int scanint(int c) {
     return val;
 }
 
+
+// Scan an identifier from the input file and
+// store it in buf[]. Return the identifier's length
+static int scanident(int c, char *buf, int lim) {
+    int i = 0;
+
+    // Allow digits, alpha and underscores
+    while (isalpha(c) || isdigit(c) || '_' == c) {
+        if (lim - 1 == i) {
+            printf("Error: Identifier too long on line %d\n", Line_);
+            exit(1);
+        } else if (i < lim - 1) {
+            buf[i++] = c;
+        }
+        c = next();
+    }
+
+    putback(c);
+    buf[i] = '\0';
+    return i;
+}
+
+
+static int keyword(char *s) {
+    switch (*s) {
+        case 'p':
+            if (!strcmp(s, "print"))
+                return T_PRINT;
+            break;
+    }
+    return 0;
+}
+
+// Scan and return the next token
 int scan(struct Token *t_) {
     int c;
+    int token_type;
 
     c = skip();
     switch (c) {
@@ -84,18 +119,34 @@ int scan(struct Token *t_) {
         case '/':
             t_->token_ = T_SLASH;
             break;
+        case ';':
+            t_->token_ = T_SEMI;
+            break;
         default:
             if (isdigit(c)) {
                 t_->int_value_ = scanint(c);
                 t_->token_ = T_INTLIT;
                 break;
+            } else if (isalpha(c) || '_' == c) {
+                // Read in a keyword or identifier
+                scanident(c, Text_, TEXTLEN);
+
+                // If it's a recognised keyword, return that token
+                token_type = keyword(Text_);
+                if (token_type) {
+                    t_->token_ = token_type;
+                    break;
+                }
+
+                // Otherwise
+                printf("Unrecognised symbol %s on line %d\n", Text_, Line_);
+                exit(1);
             }
 
-            printf("Bad character '%c'\n", c);
+            printf("Unrecognised character %c on line %d\n",
+                   c, Line_);
             exit(1);
-
     }
-
     // We found a token
     return 1;
 }
