@@ -29,8 +29,10 @@ static int next() {
         return c;
     }
 
-    c = getc(InFile_);
-    if ('\n' == c) Line_++;
+    c = fgetc(InFile_);
+    if ('\n' == c)
+        Line_++;
+
     return c;
 }
 

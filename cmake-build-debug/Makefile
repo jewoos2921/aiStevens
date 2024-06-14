@@ -129,6 +129,54 @@ aiStevens/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/build
 .PHONY : aiStevens/fast
 
+Compiler/Expr.o: Compiler/Expr.c.o
+.PHONY : Compiler/Expr.o
+
+# target to build an object file
+Compiler/Expr.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr.c.o
+.PHONY : Compiler/Expr.c.o
+
+Compiler/Expr.i: Compiler/Expr.c.i
+.PHONY : Compiler/Expr.i
+
+# target to preprocess a source file
+Compiler/Expr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr.c.i
+.PHONY : Compiler/Expr.c.i
+
+Compiler/Expr.s: Compiler/Expr.c.s
+.PHONY : Compiler/Expr.s
+
+# target to generate assembly for a file
+Compiler/Expr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr.c.s
+.PHONY : Compiler/Expr.c.s
+
+Compiler/Interp.o: Compiler/Interp.c.o
+.PHONY : Compiler/Interp.o
+
+# target to build an object file
+Compiler/Interp.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Interp.c.o
+.PHONY : Compiler/Interp.c.o
+
+Compiler/Interp.i: Compiler/Interp.c.i
+.PHONY : Compiler/Interp.i
+
+# target to preprocess a source file
+Compiler/Interp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Interp.c.i
+.PHONY : Compiler/Interp.c.i
+
+Compiler/Interp.s: Compiler/Interp.c.s
+.PHONY : Compiler/Interp.s
+
+# target to generate assembly for a file
+Compiler/Interp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Interp.c.s
+.PHONY : Compiler/Interp.c.s
+
 Compiler/Main.o: Compiler/Main.c.o
 .PHONY : Compiler/Main.o
 
@@ -177,6 +225,30 @@ Compiler/Scan.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Scan.c.s
 .PHONY : Compiler/Scan.c.s
 
+Compiler/Tree.o: Compiler/Tree.c.o
+.PHONY : Compiler/Tree.o
+
+# target to build an object file
+Compiler/Tree.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Tree.c.o
+.PHONY : Compiler/Tree.c.o
+
+Compiler/Tree.i: Compiler/Tree.c.i
+.PHONY : Compiler/Tree.i
+
+# target to preprocess a source file
+Compiler/Tree.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Tree.c.i
+.PHONY : Compiler/Tree.c.i
+
+Compiler/Tree.s: Compiler/Tree.c.s
+.PHONY : Compiler/Tree.s
+
+# target to generate assembly for a file
+Compiler/Tree.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Tree.c.s
+.PHONY : Compiler/Tree.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +258,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aiStevens"
+	@echo "... Compiler/Expr.o"
+	@echo "... Compiler/Expr.i"
+	@echo "... Compiler/Expr.s"
+	@echo "... Compiler/Interp.o"
+	@echo "... Compiler/Interp.i"
+	@echo "... Compiler/Interp.s"
 	@echo "... Compiler/Main.o"
 	@echo "... Compiler/Main.i"
 	@echo "... Compiler/Main.s"
 	@echo "... Compiler/Scan.o"
 	@echo "... Compiler/Scan.i"
 	@echo "... Compiler/Scan.s"
+	@echo "... Compiler/Tree.o"
+	@echo "... Compiler/Tree.i"
+	@echo "... Compiler/Tree.s"
 .PHONY : help
 
 

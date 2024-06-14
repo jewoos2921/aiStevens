@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/aiStevens.dir/Compiler/Main.c.o CMakeFiles/aiStevens.dir/Compiler/Scan.c.o -o aiStevens 
+/usr/bin/cc -g CMakeFiles/aiStevens.dir/Compiler/Main.c.o CMakeFiles/aiStevens.dir/Compiler/Scan.c.o CMakeFiles/aiStevens.dir/Compiler/Expr.c.o CMakeFiles/aiStevens.dir/Compiler/Interp.c.o CMakeFiles/aiStevens.dir/Compiler/Tree.c.o -o aiStevens 

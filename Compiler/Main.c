@@ -23,32 +23,23 @@ static void usage(char *prog) {
     exit(EXIT_FAILURE);
 }
 
-char *tok_str_[] = {"+", "-", "*", "/",
-                    "intlit"};
-
-static void scanfile() {
-    struct Token T;
-
-    while (scan(&T)) {
-        printf("Token %s", tok_str_[T.token_]);
-        if (T.token_ == T_INTLIT) {
-            printf(", value %d", T.int_value_);
-        }
-        printf("\n");
-    }
-}
 
 int main(int argc, char *argv[]) {
+    struct ASTNode *node;
+
+
     if (argc != 2)
         usage(argv[0]);
 
     init();
 
-    if ((InFile_ == fopen(argv[1], "r")) == NULL) {
+    if ((InFile_ = fopen(argv[1], "r")) == NULL) {
         fprintf(stderr, "Unable to open %s: %s\n", argv[1], strerror(errno));
         exit(EXIT_FAILURE);
     }
 
-    scanfile();
+    scan(&Token_);
+    node = binexpr();
+    printf("%d\n", interpretAST(node));
     return 0;
 }

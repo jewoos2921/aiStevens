@@ -76,10 +76,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Interp.c">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Main.c">
 			<Option target="aiStevens"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Scan.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Tree.c">
 			<Option target="aiStevens"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/CMakeLists.txt">

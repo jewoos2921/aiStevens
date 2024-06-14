@@ -7,6 +7,9 @@ add_executable(aiStevens
 #        main.c
         Compiler/Main.c
         Compiler/Scan.c
+        Compiler/Expr.c
+        Compiler/Interp.c
+        Compiler/Tree.c
         #        data_element.c
         #        database.c
         #        schema.c

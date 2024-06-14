@@ -11,3 +11,4 @@
 extern_ int Line_;
 extern_ int PutBack_;
 extern_ FILE *InFile_;
+extern_ struct Token Token_;
