@@ -38,8 +38,17 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
+    // Create the output file
+    if ((OutFile_ = fopen("out.s", "w")) == NULL) {
+        fprintf(stderr, "Unable to create out.s: %s\n", strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+
     scan(&Token_);
     node = binexpr(0);
     printf("%d\n", interpretAST(node));
+    generateCode(node);
+
+    fclose(OutFile_);
     return 0;
 }

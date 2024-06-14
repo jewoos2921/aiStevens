@@ -10,7 +10,10 @@ add_executable(aiStevens
         Compiler/Expr.c
         Compiler/Interp.c
         Compiler/Tree.c
-        Compiler/Expr2.c
+#        Compiler/cg.c
+        Compiler/Cg_x86_64.c
+        Compiler/Gen.c
+        #        Compiler/Expr2.c
         #        data_element.c
         #        database.c
         #        schema.c

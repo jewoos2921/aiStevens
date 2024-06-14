@@ -139,19 +139,33 @@ CMakeFiles/aiStevens.dir/Compiler/Tree.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/aiStevens.dir/Compiler/Tree.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Tree.c -o CMakeFiles/aiStevens.dir/Compiler/Tree.c.s
 
-CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o: CMakeFiles/aiStevens.dir/flags.make
-CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o: /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr2.c
-CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o: CMakeFiles/aiStevens.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o -MF CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o.d -o CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o -c /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr2.c
+CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o: CMakeFiles/aiStevens.dir/flags.make
+CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o: /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c
+CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o: CMakeFiles/aiStevens.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o -MF CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o.d -o CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o -c /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c
 
-CMakeFiles/aiStevens.dir/Compiler/Expr2.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/aiStevens.dir/Compiler/Expr2.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr2.c > CMakeFiles/aiStevens.dir/Compiler/Expr2.c.i
+CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c > CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.i
 
-CMakeFiles/aiStevens.dir/Compiler/Expr2.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/aiStevens.dir/Compiler/Expr2.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr2.c -o CMakeFiles/aiStevens.dir/Compiler/Expr2.c.s
+CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c -o CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.s
+
+CMakeFiles/aiStevens.dir/Compiler/Gen.c.o: CMakeFiles/aiStevens.dir/flags.make
+CMakeFiles/aiStevens.dir/Compiler/Gen.c.o: /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Gen.c
+CMakeFiles/aiStevens.dir/Compiler/Gen.c.o: CMakeFiles/aiStevens.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/aiStevens.dir/Compiler/Gen.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/aiStevens.dir/Compiler/Gen.c.o -MF CMakeFiles/aiStevens.dir/Compiler/Gen.c.o.d -o CMakeFiles/aiStevens.dir/Compiler/Gen.c.o -c /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Gen.c
+
+CMakeFiles/aiStevens.dir/Compiler/Gen.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/aiStevens.dir/Compiler/Gen.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Gen.c > CMakeFiles/aiStevens.dir/Compiler/Gen.c.i
+
+CMakeFiles/aiStevens.dir/Compiler/Gen.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/aiStevens.dir/Compiler/Gen.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Gen.c -o CMakeFiles/aiStevens.dir/Compiler/Gen.c.s
 
 # Object files for target aiStevens
 aiStevens_OBJECTS = \
@@ -160,7 +174,8 @@ aiStevens_OBJECTS = \
 "CMakeFiles/aiStevens.dir/Compiler/Expr.c.o" \
 "CMakeFiles/aiStevens.dir/Compiler/Interp.c.o" \
 "CMakeFiles/aiStevens.dir/Compiler/Tree.c.o" \
-"CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o"
+"CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o" \
+"CMakeFiles/aiStevens.dir/Compiler/Gen.c.o"
 
 # External object files for target aiStevens
 aiStevens_EXTERNAL_OBJECTS =
@@ -170,10 +185,11 @@ aiStevens: CMakeFiles/aiStevens.dir/Compiler/Scan.c.o
 aiStevens: CMakeFiles/aiStevens.dir/Compiler/Expr.c.o
 aiStevens: CMakeFiles/aiStevens.dir/Compiler/Interp.c.o
 aiStevens: CMakeFiles/aiStevens.dir/Compiler/Tree.c.o
-aiStevens: CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o
+aiStevens: CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o
+aiStevens: CMakeFiles/aiStevens.dir/Compiler/Gen.c.o
 aiStevens: CMakeFiles/aiStevens.dir/build.make
 aiStevens: CMakeFiles/aiStevens.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable aiStevens"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable aiStevens"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aiStevens.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

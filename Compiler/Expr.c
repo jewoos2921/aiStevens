@@ -7,13 +7,13 @@
 
 
 static struct ASTNode *primary() {
-    struct ASTNode *n;
+    struct ASTNode *node;
 
     switch (Token_.token_) {
         case T_INTLIT:
-            n = makeASTLeaf(A_INTLIT, Token_.int_value_);
+            node = makeASTLeaf(A_INTLIT, Token_.int_value_);
             scan(&Token_);
-            return n;
+            return node;
 
         default:
             fprintf(stderr, "syntax error on line %d\n", Line_);

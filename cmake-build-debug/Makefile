@@ -129,6 +129,30 @@ aiStevens/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/build
 .PHONY : aiStevens/fast
 
+Compiler/Cg_x86_64.o: Compiler/Cg_x86_64.c.o
+.PHONY : Compiler/Cg_x86_64.o
+
+# target to build an object file
+Compiler/Cg_x86_64.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o
+.PHONY : Compiler/Cg_x86_64.c.o
+
+Compiler/Cg_x86_64.i: Compiler/Cg_x86_64.c.i
+.PHONY : Compiler/Cg_x86_64.i
+
+# target to preprocess a source file
+Compiler/Cg_x86_64.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.i
+.PHONY : Compiler/Cg_x86_64.c.i
+
+Compiler/Cg_x86_64.s: Compiler/Cg_x86_64.c.s
+.PHONY : Compiler/Cg_x86_64.s
+
+# target to generate assembly for a file
+Compiler/Cg_x86_64.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.s
+.PHONY : Compiler/Cg_x86_64.c.s
+
 Compiler/Expr.o: Compiler/Expr.c.o
 .PHONY : Compiler/Expr.o
 
@@ -153,29 +177,29 @@ Compiler/Expr.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr.c.s
 .PHONY : Compiler/Expr.c.s
 
-Compiler/Expr2.o: Compiler/Expr2.c.o
-.PHONY : Compiler/Expr2.o
+Compiler/Gen.o: Compiler/Gen.c.o
+.PHONY : Compiler/Gen.o
 
 # target to build an object file
-Compiler/Expr2.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o
-.PHONY : Compiler/Expr2.c.o
+Compiler/Gen.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Gen.c.o
+.PHONY : Compiler/Gen.c.o
 
-Compiler/Expr2.i: Compiler/Expr2.c.i
-.PHONY : Compiler/Expr2.i
+Compiler/Gen.i: Compiler/Gen.c.i
+.PHONY : Compiler/Gen.i
 
 # target to preprocess a source file
-Compiler/Expr2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr2.c.i
-.PHONY : Compiler/Expr2.c.i
+Compiler/Gen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Gen.c.i
+.PHONY : Compiler/Gen.c.i
 
-Compiler/Expr2.s: Compiler/Expr2.c.s
-.PHONY : Compiler/Expr2.s
+Compiler/Gen.s: Compiler/Gen.c.s
+.PHONY : Compiler/Gen.s
 
 # target to generate assembly for a file
-Compiler/Expr2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr2.c.s
-.PHONY : Compiler/Expr2.c.s
+Compiler/Gen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Gen.c.s
+.PHONY : Compiler/Gen.c.s
 
 Compiler/Interp.o: Compiler/Interp.c.o
 .PHONY : Compiler/Interp.o
@@ -282,12 +306,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aiStevens"
+	@echo "... Compiler/Cg_x86_64.o"
+	@echo "... Compiler/Cg_x86_64.i"
+	@echo "... Compiler/Cg_x86_64.s"
 	@echo "... Compiler/Expr.o"
 	@echo "... Compiler/Expr.i"
 	@echo "... Compiler/Expr.s"
-	@echo "... Compiler/Expr2.o"
-	@echo "... Compiler/Expr2.i"
-	@echo "... Compiler/Expr2.s"
+	@echo "... Compiler/Gen.o"
+	@echo "... Compiler/Gen.i"
+	@echo "... Compiler/Gen.s"
 	@echo "... Compiler/Interp.o"
 	@echo "... Compiler/Interp.i"
 	@echo "... Compiler/Interp.s"

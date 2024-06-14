@@ -85,15 +85,15 @@ int scan(struct Token *t_) {
             t_->token_ = T_SLASH;
             break;
         default:
-
             if (isdigit(c)) {
                 t_->int_value_ = scanint(c);
                 t_->token_ = T_INTLIT;
                 break;
-            } else {
-                printf("Bad character '%c'\n", c);
-                exit(1);
             }
+
+            printf("Bad character '%c'\n", c);
+            exit(1);
+
     }
 
     // We found a token
