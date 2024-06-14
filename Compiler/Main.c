@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     }
 
     scan(&Token_);
-    node = binexpr();
+    node = binexpr(0);
     printf("%d\n", interpretAST(node));
     return 0;
 }

@@ -44,11 +44,7 @@ static int skip() {
     int c;
 
     c = next();
-    while (' ' == c ||
-           '\t' == c ||
-           '\n' == c ||
-           '\r' == c ||
-           '\f' == c) {
+    while (' ' == c || '\t' == c || '\n' == c || '\r' == c || '\f' == c) {
         c = next();
     }
 
@@ -70,11 +66,11 @@ static int scanint(int c) {
 
 int scan(struct Token *t_) {
     int c;
+
     c = skip();
-
-
     switch (c) {
         case EOF:
+            t_->token_ = T_EOF;
             return 0;
         case '+':
             t_->token_ = T_PLUS;

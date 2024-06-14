@@ -38,43 +38,28 @@ int arithop(int tokentype) {
     }
 }
 
-// Operator precedence for each token.
-static int OpPrec[] = {0, 10, 10, 20, 20, 0};
+struct ASTNode *additiveExpr();
 
-// Check that we have a binary operator where we need to.
-// Return its precedence.
-static int op_precedence(int tokentype) {
-    int prec = OpPrec[tokentype];
-    if (prec == 0) {
-        fprintf(stderr, "syntax error, token %d\n", tokentype);
-        exit(1);
-    }
-    return prec;
-}
-
-// return an AST tree whose root is a binary operator
-// Paramete ptp is the previous token's precedence.
-struct ASTNode *binexpr(int ptp) {
+struct ASTNode *multiplicativeExpr() {
     struct ASTNode *left, *right;
     int token_type;
 
-    // get the left hand side
+    // get the integer literal on the left
+    // Fetch the next token at the same time.
     left = primary();
+
 
     // If no tokens left, return just the left node
     token_type = Token_.token_;
     if (token_type == T_EOF)
         return left;
-    // While the precedence of this token is
-    // more than that of the previous token precedence.
-    while (op_precedence(token_type) > ptp) {
+
+    // while the token is a '*' or '/'
+    while (token_type == T_STAR || token_type == T_SLASH) {
 
         // Fetch in the next integer literal
         scan(&Token_);
-
-        // Recursively cll binexpr() with the
-        // precedence of our token to build a sub-tree
-        right = binexpr(OpPrec[token_type]);
+        right = primary();
 
         // Make the AST node for the binary operator.
         left = makeASTNode(arithop(token_type), left, right, 0);
@@ -85,8 +70,44 @@ struct ASTNode *binexpr(int ptp) {
             return left;
     }
 
-    // Return the tree we have when the precedence
-    // is the same or lower.
+
+    // Return whaterverr tree we have created.
     return left;
+}
+
+struct ASTNode *additiveExpr() {
+    struct ASTNode *left, *right;
+    int token_type;
+
+    // Get the left sub-tree at a higer precedence
+    left = multiplicativeExpr();
+
+    token_type = Token_.token_;
+    if (token_type == T_EOF)
+        return left;
+
+    // Loop working on token at our level of precedence
+    while (1) {
+        // Fetch in the next integer literal
+        scan(&Token_);
+
+        // Get the right sub-tree at a higer precedence
+        right = multiplicativeExpr();
+
+        // Join the two sub-trees
+        left = makeASTNode(arithop(token_type), left, right, 0);
+
+        token_type = Token_.token_;
+        if (token_type == T_EOF)
+            break;
+    }
+
+    return left;
+}
+
+// return an AST tree whose root is a binary operator
+// Paramete ptp is the previous token's precedence.
+struct ASTNode *binexpr(int ptp) {
+    return additiveExpr();
 }
 

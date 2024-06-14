@@ -153,6 +153,30 @@ Compiler/Expr.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr.c.s
 .PHONY : Compiler/Expr.c.s
 
+Compiler/Expr2.o: Compiler/Expr2.c.o
+.PHONY : Compiler/Expr2.o
+
+# target to build an object file
+Compiler/Expr2.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o
+.PHONY : Compiler/Expr2.c.o
+
+Compiler/Expr2.i: Compiler/Expr2.c.i
+.PHONY : Compiler/Expr2.i
+
+# target to preprocess a source file
+Compiler/Expr2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr2.c.i
+.PHONY : Compiler/Expr2.c.i
+
+Compiler/Expr2.s: Compiler/Expr2.c.s
+.PHONY : Compiler/Expr2.s
+
+# target to generate assembly for a file
+Compiler/Expr2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Expr2.c.s
+.PHONY : Compiler/Expr2.c.s
+
 Compiler/Interp.o: Compiler/Interp.c.o
 .PHONY : Compiler/Interp.o
 
@@ -261,6 +285,9 @@ help:
 	@echo "... Compiler/Expr.o"
 	@echo "... Compiler/Expr.i"
 	@echo "... Compiler/Expr.s"
+	@echo "... Compiler/Expr2.o"
+	@echo "... Compiler/Expr2.i"
+	@echo "... Compiler/Expr2.s"
 	@echo "... Compiler/Interp.o"
 	@echo "... Compiler/Interp.i"
 	@echo "... Compiler/Interp.s"

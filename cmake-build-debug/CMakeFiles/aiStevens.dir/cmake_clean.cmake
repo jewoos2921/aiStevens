@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/aiStevens.dir/Compiler/Expr.c.o"
   "CMakeFiles/aiStevens.dir/Compiler/Expr.c.o.d"
+  "CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o"
+  "CMakeFiles/aiStevens.dir/Compiler/Expr2.c.o.d"
   "CMakeFiles/aiStevens.dir/Compiler/Interp.c.o"
   "CMakeFiles/aiStevens.dir/Compiler/Interp.c.o.d"
   "CMakeFiles/aiStevens.dir/Compiler/Main.c.o"

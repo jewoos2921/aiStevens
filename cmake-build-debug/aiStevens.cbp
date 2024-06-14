@@ -79,6 +79,9 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr.c">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr2.c">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Interp.c">
 			<Option target="aiStevens"/>
 		</Unit>
