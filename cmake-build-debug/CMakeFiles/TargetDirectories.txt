@@ -1,0 +1,3 @@
+/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles/aiStevens.dir
+/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/jewoo/CLionProjects/aiStevens/cmake-build-debug/CMakeFiles/rebuild_cache.dir
