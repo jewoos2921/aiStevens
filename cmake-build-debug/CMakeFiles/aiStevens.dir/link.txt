@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/aiStevens.dir/main.c.o CMakeFiles/aiStevens.dir/gpt_train.c.o -o aiStevens 
+/usr/bin/cc -g CMakeFiles/aiStevens.dir/Compiler/Main.c.o CMakeFiles/aiStevens.dir/Compiler/Scan.c.o -o aiStevens 

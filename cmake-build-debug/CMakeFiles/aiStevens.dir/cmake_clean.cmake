@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/aiStevens.dir/gpt_train.c.o"
-  "CMakeFiles/aiStevens.dir/gpt_train.c.o.d"
-  "CMakeFiles/aiStevens.dir/main.c.o"
-  "CMakeFiles/aiStevens.dir/main.c.o.d"
+  "CMakeFiles/aiStevens.dir/Compiler/Main.c.o"
+  "CMakeFiles/aiStevens.dir/Compiler/Main.c.o.d"
+  "CMakeFiles/aiStevens.dir/Compiler/Scan.c.o"
+  "CMakeFiles/aiStevens.dir/Compiler/Scan.c.o.d"
   "aiStevens"
   "aiStevens.pdb"
 )

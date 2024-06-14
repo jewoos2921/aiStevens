@@ -4,7 +4,9 @@ project(aiStevens C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(aiStevens
-        main.c
+#        main.c
+        Compiler/Main.c
+        Compiler/Scan.c
         #        data_element.c
         #        database.c
         #        schema.c

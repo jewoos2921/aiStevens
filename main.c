@@ -1,4 +1,5 @@
-//#define TESTING
+#define TESTING
+
 
 
 

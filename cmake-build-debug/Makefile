@@ -129,53 +129,53 @@ aiStevens/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/build
 .PHONY : aiStevens/fast
 
-gpt_train.o: gpt_train.c.o
-.PHONY : gpt_train.o
+Compiler/Main.o: Compiler/Main.c.o
+.PHONY : Compiler/Main.o
 
 # target to build an object file
-gpt_train.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/gpt_train.c.o
-.PHONY : gpt_train.c.o
+Compiler/Main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Main.c.o
+.PHONY : Compiler/Main.c.o
 
-gpt_train.i: gpt_train.c.i
-.PHONY : gpt_train.i
+Compiler/Main.i: Compiler/Main.c.i
+.PHONY : Compiler/Main.i
 
 # target to preprocess a source file
-gpt_train.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/gpt_train.c.i
-.PHONY : gpt_train.c.i
+Compiler/Main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Main.c.i
+.PHONY : Compiler/Main.c.i
 
-gpt_train.s: gpt_train.c.s
-.PHONY : gpt_train.s
+Compiler/Main.s: Compiler/Main.c.s
+.PHONY : Compiler/Main.s
 
 # target to generate assembly for a file
-gpt_train.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/gpt_train.c.s
-.PHONY : gpt_train.c.s
+Compiler/Main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Main.c.s
+.PHONY : Compiler/Main.c.s
 
-main.o: main.c.o
-.PHONY : main.o
+Compiler/Scan.o: Compiler/Scan.c.o
+.PHONY : Compiler/Scan.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/main.c.o
-.PHONY : main.c.o
+Compiler/Scan.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Scan.c.o
+.PHONY : Compiler/Scan.c.o
 
-main.i: main.c.i
-.PHONY : main.i
+Compiler/Scan.i: Compiler/Scan.c.i
+.PHONY : Compiler/Scan.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/main.c.i
-.PHONY : main.c.i
+Compiler/Scan.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Scan.c.i
+.PHONY : Compiler/Scan.c.i
 
-main.s: main.c.s
-.PHONY : main.s
+Compiler/Scan.s: Compiler/Scan.c.s
+.PHONY : Compiler/Scan.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/main.c.s
-.PHONY : main.c.s
+Compiler/Scan.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Scan.c.s
+.PHONY : Compiler/Scan.c.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aiStevens"
-	@echo "... gpt_train.o"
-	@echo "... gpt_train.i"
-	@echo "... gpt_train.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... Compiler/Main.o"
+	@echo "... Compiler/Main.i"
+	@echo "... Compiler/Main.s"
+	@echo "... Compiler/Scan.o"
+	@echo "... Compiler/Scan.i"
+	@echo "... Compiler/Scan.s"
 .PHONY : help
 
 
