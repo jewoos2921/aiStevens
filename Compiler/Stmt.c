@@ -6,6 +6,7 @@
 #include "Data.h"
 #include "Decl.h"
 
+
 // compound_statement:          // empty, i.e. no statement
 //      |      statement
 //      |      statement statements
@@ -15,21 +16,11 @@
 //      |     declaration
 //      |     assignment_statement
 //      |     if_statement
+//      |     while_statement
 //      ;
-//
+
 // print_statement: 'print' expression ';'  ;
 //
-// declaration: 'int' identifier ';'  ;
-//
-// assignment_statement: identifier '=' expression ';'   ;
-//
-// if_statement: if_head
-//      |        if_head 'else' compound_statement
-//      ;
-//
-// if_head: 'if' '(' true_false_expression ')' compound_statement  ;
-//
-// identifier: T_IDENT ;
 
 static struct ASTNode *printStatement() {
     struct ASTNode *tree;
@@ -48,6 +39,7 @@ static struct ASTNode *printStatement() {
     return tree;
 }
 
+// assignment_statement: identifier '=' expression ';'   ;
 static struct ASTNode *assignmentStatement() {
     struct ASTNode *left, *right, *tree;
     int id;
@@ -75,7 +67,16 @@ static struct ASTNode *assignmentStatement() {
     return tree;
 }
 
-struct ASTNode *ifStatement() {
+// if_statement: if_head
+//      |        if_head 'else' compound_statement
+//      ;
+//
+// if_head: 'if' '(' true_false_expression ')' compound_statement  ;
+//
+// Parse an IF statement including
+// any optional ELSE clause
+// and return its AST
+static struct ASTNode *ifStatement() {
     struct ASTNode *condAST, *trueAST, *falseAST = NULL;
 
     // Ensure we have 'if' '('
@@ -103,6 +104,30 @@ struct ASTNode *ifStatement() {
     return makeASTNode(A_IF, condAST, trueAST, falseAST, 0);
 }
 
+// while_statement: 'while' '(' true_false_expression ')' compound_statement  ;
+//
+// Parse a WHILE statement
+// and return its AST
+static struct ASTNode *whileStatement() {
+    struct ASTNode *condAST, *bodyAST;
+
+    // Ensure we have 'while' '('
+    match(T_WHILE, "while");
+    lParen();
+
+    // Parse the following expression and the ')' following. Ensure the tree's operation is a comparison.
+    condAST = binexpr(0);
+    if (condAST->op_ < A_EQ || condAST->op_ > A_GE) {
+        fatal("Bad comparison operator");
+    }
+    rParen();
+
+    // Get the AST for the compound statement
+    bodyAST = compoundStatement();
+
+    return makeASTNode(A_WHILE, condAST, NULL, bodyAST, 0);
+}
+
 // Parse a compound statement and return its AST
 struct ASTNode *compoundStatement() {
     struct ASTNode *left = NULL;
@@ -125,6 +150,9 @@ struct ASTNode *compoundStatement() {
                 break;
             case T_IF:
                 tree = ifStatement();
+                break;
+            case T_WHILE:
+                tree = whileStatement();
                 break;
             case T_RBRACE:
                 // When we hit a right curly brace, skip past it and retrun the AST

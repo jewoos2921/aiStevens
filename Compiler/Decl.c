@@ -8,6 +8,8 @@
 
 // Parsing of declarations
 
+// declaration: 'int' identifier ';'  ;
+//
 // Parse the declaration of a variable
 void varDeclaration() {
 

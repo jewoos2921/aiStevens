@@ -18,7 +18,11 @@ static int label() {
 static int genIfAST(struct ASTNode *node_) {
     int lFalse, lEnd;
 
-    //
+    // Generate two labels: one for the
+    // false compound statement, and one
+    // for the end of the overall IF statement.
+    // When there is no ELSE clause, Lfalse _is_
+    // the ending label!
     lFalse = label();
     if (node_->right_)
         lEnd = label();
@@ -49,6 +53,29 @@ static int genIfAST(struct ASTNode *node_) {
     return NOREG;
 }
 
+// Generate the code for a WHILE statement
+// and an optional ELSE clause
+static int genWHILE(struct ASTNode *node_) {
+    int lStart, lEnd;
+
+    // Generate the start and end labels
+    // and ouput the start label
+    lStart = label();
+    lEnd = label();
+    cgLabel(lStart);
+
+    // Generate the condition code followed
+    // by a jump to the end label.
+    // We cheat by sending the Lfalse label as a register.
+    genAST(node_->left_, lEnd, node_->op_);
+    genFreeRegs();
+
+    // Finally output the jump back to the condition, and the end label
+    cgJump(lStart);
+    cgLabel(lEnd);
+    return NOREG;
+}
+
 // Given an AST, the register (if any) that holds
 // the previous rvalue, and the AST op of the parent,
 // generate assembly code recursively.
@@ -60,6 +87,8 @@ int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
     switch (node->op_) {
         case A_IF:
             return genIfAST(node);
+        case A_WHILE:
+            return genWHILE(node);
         case A_GLUE:
             // Do each child statement, and free the registers after each child
             genAST(node->left_, NOREG, node->op_);

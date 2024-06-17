@@ -76,8 +76,7 @@ static int scanident(int c, char *buf, int lim) {
     // Allow digits, alpha and underscores
     while (isalpha(c) || isdigit(c) || '_' == c) {
         if (lim - 1 == i) {
-            printf("Error: Identifier too long on line %d\n", Line_);
-            exit(1);
+            fatal("identifier too long");
         } else if (i < lim - 1) {
             buf[i++] = c;
         }
@@ -103,10 +102,12 @@ static int keyword(char *s) {
             if (!strcmp(s, "int"))
                 return T_INT;
             break;
-
         case 'p':
             if (!strcmp(s, "print"))
                 return T_PRINT;
+        case 'w':
+            if (!strcmp(s, "while"))
+                return T_WHILE;
             break;
     }
     return 0;
