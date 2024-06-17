@@ -56,6 +56,18 @@ int cgStorGlob(int r_, char *identifier_);
 
 void cgGlobSym(char *sym_);
 
+int cgEqual(int r1_, int r2_);
+
+int cgNotEqual(int r1_, int r2_);
+
+int cgLessThan(int r1_, int r2_);
+
+int cgGreaterThan(int r1_, int r2_);
+
+int cgLessEqual(int r1_, int r2_);
+
+int cgGreaterEqual(int r1_, int r2_);
+
 // Expr.c
 struct ASTNode *binexpr(int ptp_);
 

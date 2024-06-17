@@ -9,8 +9,10 @@
 
 // List of available registers and their names
 static int freeReg_[4];
-static char *regList_[4] = {"%r8", "%r9",
-                            "%r10", "%r11"};
+static char *regList_[4] = {"r8", "r9",
+                            "r10", "r11"};
+static char *breList[4] = {"r8b", "r9b",
+                           "r10b", "r11b"};
 
 // set all registers as available
 void freeAllRegisters() {
@@ -130,4 +132,36 @@ int cgStorGlob(int r_, char *identifier_) {
 
 void cgGlobSym(char *sym_) {
     fprintf(OutFile_, "\tcommon\t%s 8:8\n", sym_);
+}
+
+static int cgCompare(int r1_, int r2_, char *op) {
+    fprintf(OutFile_, "\tcmp\t%s, %s\n", regList_[r2_], regList_[r1_]);
+    fprintf(OutFile_, "\t%s\t%s\n", op, breList[r2_]);
+    fprintf(OutFile_, "\tand\t%s, 255\n", regList_[r2_]);
+    freeRegister(r1_);
+    return r2_;
+}
+
+int cgEqual(int r1_, int r2_) {
+    return cgCompare(r1_, r2_, "sete");
+}
+
+int cgNotEqual(int r1_, int r2_) {
+    return cgCompare(r1_, r2_, "setne");
+}
+
+int cgLessThan(int r1_, int r2_) {
+    return cgCompare(r1_, r2_, "setl");
+}
+
+int cgGreaterThan(int r1_, int r2_) {
+    return cgCompare(r1_, r2_, "setg");
+}
+
+int cgLessEqual(int r1_, int r2_) {
+    return cgCompare(r1_, r2_, "setle");
+}
+
+int cgGreaterEqual(int r1_, int r2_) {
+    return cgCompare(r1_, r2_, "setge");
 }

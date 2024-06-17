@@ -30,6 +30,19 @@ int genAST(struct ASTNode *node, int reg_) {
             return cgMul(leftreg, rightreg);
         case A_DIVIDE:
             return cgDiv(leftreg, rightreg);
+        case A_EQ:
+            return cgEqual(leftreg, rightreg);
+        case A_NE:
+            return cgNotEqual(leftreg, rightreg);
+        case A_LT:
+            return cgLessThan(leftreg, rightreg);
+        case A_GT:
+            return cgGreaterThan(leftreg, rightreg);
+        case A_LE:
+            return cgLessEqual(leftreg, rightreg);
+        case A_GE:
+            return cgGreaterEqual(leftreg, rightreg);
+
         case A_INTLIT:
             return cgLoadInt(node->v_.int_value_);
         case A_IDENT:
@@ -39,7 +52,6 @@ int genAST(struct ASTNode *node, int reg_) {
         case A_ASSIGN:
             // The work has aleady been done, return the result
             return rightreg;
-
         default:
             fatald("Unknown AST operator", node->op_);
     }

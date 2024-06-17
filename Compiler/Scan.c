@@ -130,7 +130,35 @@ int scan(struct Token *t_) {
             t_->token_ = T_SEMI;
             break;
         case '=':
-            t_->token_ = T_EQUALS;
+            if ((c = next()) == '=') {
+                t_->token_ = T_EQ;
+            } else {
+                putback(c);
+                t_->token_ = T_ASSIGN;
+            }
+            break;
+        case '!':
+            if ((c = next()) == '=') {
+                t_->token_ = T_NE;
+            } else {
+                fatalc("Unrecognised token", c);
+            }
+            break;
+        case '<':
+            if ((c = next()) == '=') {
+                t_->token_ = T_LE;
+            } else {
+                putback(c);
+                t_->token_ = T_LT;
+            }
+            break;
+        case '>':
+            if ((c = next()) == '=') {
+                t_->token_ = T_GE;
+            } else {
+                putback(c);
+                t_->token_ = T_GT;
+            }
             break;
         default:
             if (isdigit(c)) {
