@@ -14,7 +14,7 @@ static struct ASTNode *primary() {
     switch (Token_.token_) {
         case T_INTLIT:
             node = makeASTLeaf(A_INTLIT, Token_.int_value_);
-            return node;
+            break;
 
         case T_IDENT:
             id = findGlob(Text_);
@@ -67,7 +67,7 @@ struct ASTNode *binexpr(int ptp) {
 
     // If no tokens left, return just the left node
     token_type = Token_.token_;
-    if (token_type == T_SEMI)
+    if (token_type == T_SEMI || token_type == T_RPAREN)
         return left;
 
 
@@ -83,11 +83,11 @@ struct ASTNode *binexpr(int ptp) {
         right = binexpr(OpPrec[token_type]);
 
         // Make the AST node for the binary operator.
-        left = makeASTNode(arithop(token_type), left, right, 0);
+        left = makeASTNode(arithop(token_type), left, NULL, right, 0);
 
         // Update the token type
         token_type = Token_.token_;
-        if (token_type == T_EOF)
+        if (token_type == T_EOF || token_type == T_RPAREN)
             return left;
     }
 

@@ -19,6 +19,22 @@ void semi() {
     match(T_SEMI, ";");
 }
 
+void lBrace() {
+    match(T_LBRACE, "{");
+}
+
+void rBrace() {
+    match(T_RBRACE, "}");
+}
+
+void lParen() {
+    match(T_LPAREN, "(");
+}
+
+void rParen() {
+    match(T_RPAREN, ")");
+}
+
 
 void ident() {
     match(T_IDENT, "identifier");

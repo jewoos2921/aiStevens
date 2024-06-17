@@ -130,6 +130,7 @@ int cgStorGlob(int r_, char *identifier_) {
     return r_;
 }
 
+// Generate a global symbol
 void cgGlobSym(char *sym_) {
     fprintf(OutFile_, "\tcommon\t%s 8:8\n", sym_);
 }
@@ -142,26 +143,44 @@ static int cgCompare(int r1_, int r2_, char *op) {
     return r2_;
 }
 
-int cgEqual(int r1_, int r2_) {
-    return cgCompare(r1_, r2_, "sete");
+// List of comparison operators, indexed by ASTop values
+static char *cmpList[] = {"sete", "setne", "setl", "setg", "setle", "setge"};
+
+// Compare two registersand set if true.
+int cgCompareAndSet(int ASTop_, int r1_, int r2_) {
+
+    // Check the range of the AST operation
+    if (ASTop_ < A_EQ || ASTop_ > A_GE) {
+        fatal("Bad ASTop in cgCompareAndSet");
+    }
+
+    fprintf(OutFile_, "\tcmp\t%s, %s\n", regList_[r1_], regList_[r2_]);
+    fprintf(OutFile_, "\t%s\t%s\n", cmpList[ASTop_ - A_EQ], breList[r2_]);
+    fprintf(OutFile_, "\tmovzb\t%s, %s\n", regList_[r2_], breList[r2_]);
+    freeRegister(r1_);
+    return r2_;
 }
 
-int cgNotEqual(int r1_, int r2_) {
-    return cgCompare(r1_, r2_, "setne");
+void cgLabel(int label_) {
+    fprintf(OutFile_, "L%d:\n", label_);
 }
 
-int cgLessThan(int r1_, int r2_) {
-    return cgCompare(r1_, r2_, "setl");
+void cgJump(int label_) {
+    fprintf(OutFile_, "\tjmp\tL%d\n", label_);
 }
 
-int cgGreaterThan(int r1_, int r2_) {
-    return cgCompare(r1_, r2_, "setg");
-}
+// List of inverted jump instruction in AST opder: A_EQ, A_NE, A_LT, A_GT, A_LE, A_GE
+static char *jumpList[] = {"jne", "je", "jge", "jle", "jg", "jl"};
 
-int cgLessEqual(int r1_, int r2_) {
-    return cgCompare(r1_, r2_, "setle");
-}
+int cgCompareAndJump(int ASTop_, int r1_, int r2_, int label_) {
 
-int cgGreaterEqual(int r1_, int r2_) {
-    return cgCompare(r1_, r2_, "setge");
+    // Check the range of the AST operation
+    if (ASTop_ < A_EQ || ASTop_ > A_GE) {
+        fatal("Bad ASTop in cgCompareAndJump");
+    }
+
+    fprintf(OutFile_, "\tcmp\t%s, %s\n", regList_[r1_], regList_[r2_]);
+    fprintf(OutFile_, "\t%s\tL%d\n", jumpList[ASTop_ - A_EQ], label_);
+    freeAllRegisters();
+    return NOREG;
 }

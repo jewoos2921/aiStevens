@@ -10,10 +10,7 @@
 // Lexical Scanning
 
 
-
-// Return the lookahead character and
-// fetch the next character
-// from the input stream
+// Return the position of character c in string s, or -1 if c not found
 static int chrpos(char *s, char c) {
     char *p;
 
@@ -21,6 +18,7 @@ static int chrpos(char *s, char c) {
     return p ? p - s : -1;
 }
 
+// Get the next character from the input file.
 static int next() {
     int c;
     if (PutBack_) {
@@ -36,10 +34,14 @@ static int next() {
     return c;
 }
 
+// Put back an unwanted character.
 static void putback(int c) {
     PutBack_ = c;
 }
 
+// Skip past input that we don't need to deal with,
+// i.e. whitespace, newlines. Return the first
+// character we do need to deal with.
 static int skip() {
     int c;
 
@@ -51,6 +53,7 @@ static int skip() {
     return c;
 }
 
+// Scan and return an integer literal value from the input file.
 static int scanint(int c) {
     int k, val = 0;
 
@@ -89,7 +92,14 @@ static int scanident(int c, char *buf, int lim) {
 
 static int keyword(char *s) {
     switch (*s) {
+        case 'e':
+            if (!strcmp(s, "else"))
+                return T_ELSE;
+            break;
+
         case 'i':
+            if (!strcmp(s, "if"))
+                return T_IF;
             if (!strcmp(s, "int"))
                 return T_INT;
             break;
@@ -128,6 +138,18 @@ int scan(struct Token *t_) {
             break;
         case ';':
             t_->token_ = T_SEMI;
+            break;
+        case '{':
+            t_->token_ = T_LBRACE;
+            break;
+        case '}':
+            t_->token_ = T_RBRACE;
+            break;
+        case '(':
+            t_->token_ = T_LPAREN;
+            break;
+        case ')':
+            t_->token_ = T_RPAREN;
             break;
         case '=':
             if ((c = next()) == '=') {

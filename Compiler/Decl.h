@@ -9,6 +9,7 @@ int scan(struct Token *t_);
 // Tree.c
 struct ASTNode *makeASTNode(int op_,
                             struct ASTNode *left,
+                            struct ASTNode *mid_,
                             struct ASTNode *right_,
                             int int_value_);
 
@@ -19,7 +20,7 @@ struct ASTNode *makeASTUnary(int op_,
                              int int_value_);
 
 // Gen.c
-int genAST(struct ASTNode *node_, int reg_);
+int genAST(struct ASTNode *node_, int reg_, int parentASTop_);
 
 void genPreamble();
 
@@ -56,28 +57,32 @@ int cgStorGlob(int r_, char *identifier_);
 
 void cgGlobSym(char *sym_);
 
-int cgEqual(int r1_, int r2_);
+int cgCompareAndSet(int ASTop_, int r1_, int r2_);
 
-int cgNotEqual(int r1_, int r2_);
+int cgCompareAndJump(int ASTop_, int r1_, int r2_, int label_);
 
-int cgLessThan(int r1_, int r2_);
+void cgLabel(int label_);
 
-int cgGreaterThan(int r1_, int r2_);
-
-int cgLessEqual(int r1_, int r2_);
-
-int cgGreaterEqual(int r1_, int r2_);
+void cgJump(int label_);
 
 // Expr.c
 struct ASTNode *binexpr(int ptp_);
 
 // Stmt.c
-void statements();
+struct ASTNode *compoundStatement();
 
 // Misc.c
 void match(int expected_, char *what_);
 
 void semi();
+
+void lBrace();
+
+void rBrace();
+
+void lParen();
+
+void rParen();
 
 void ident();
 
