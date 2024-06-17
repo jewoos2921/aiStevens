@@ -83,7 +83,7 @@ static int genWHILE(struct ASTNode *node_) {
 int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
     int leftreg, rightreg;
 
-
+    // We not have specific AST node handling at the top
     switch (node->op_) {
         case A_IF:
             return genIfAST(node);

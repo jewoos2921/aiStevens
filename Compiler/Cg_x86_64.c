@@ -135,14 +135,6 @@ void cgGlobSym(char *sym_) {
     fprintf(OutFile_, "\tcommon\t%s 8:8\n", sym_);
 }
 
-static int cgCompare(int r1_, int r2_, char *op) {
-    fprintf(OutFile_, "\tcmp\t%s, %s\n", regList_[r2_], regList_[r1_]);
-    fprintf(OutFile_, "\t%s\t%s\n", op, breList[r2_]);
-    fprintf(OutFile_, "\tand\t%s, 255\n", regList_[r2_]);
-    freeRegister(r1_);
-    return r2_;
-}
-
 // List of comparison operators, indexed by ASTop values
 static char *cmpList[] = {"sete", "setne", "setl", "setg", "setle", "setge"};
 

@@ -6,6 +6,8 @@
 #include "Data.h"
 #include "Decl.h"
 
+// prototypes
+static struct ASTNode *singleStatement();
 
 // compound_statement:          // empty, i.e. no statement
 //      |      statement
@@ -20,8 +22,6 @@
 //      ;
 
 // print_statement: 'print' expression ';'  ;
-//
-
 static struct ASTNode *printStatement() {
     struct ASTNode *tree;
     int reg;
@@ -128,6 +128,76 @@ static struct ASTNode *whileStatement() {
     return makeASTNode(A_WHILE, condAST, NULL, bodyAST, 0);
 }
 
+// for_statement: 'for' '(' preop_statement ';'
+//                          true_false_expression ';'
+//                          postop_statement ')' compound_statement  ;
+//
+// preop_statement:  statement          (for now)
+// postop_statement: statement          (for now)
+//
+// Parse a FOR statement
+// and return its AST
+static struct ASTNode *forStatement() {
+    struct ASTNode *condAST, *bodyAST;
+    struct ASTNode *preopAST, *postopAST;
+    struct ASTNode *tree;
+
+    // Ensure we have 'for' '('
+    match(T_FOR, "for");
+    lParen();
+
+    // Get the pre_op statement and the ';'
+    preopAST = singleStatement();
+    semi();
+
+    // Get the condition and the ';'
+    condAST = binexpr(0);
+    if (condAST->op_ < A_EQ || condAST->op_ > A_GE) {
+        fatal("Bad comparison operator");
+    }
+    semi();
+
+    // Get the post_op statement and the ')'
+    postopAST = singleStatement();
+    rParen();
+
+    // Get the AST for the compound statement
+    bodyAST = compoundStatement();
+
+
+    // For now, all four sub-trees have to be non-NULL.
+    // Later on, we'll change the semantics for when some are missing
+
+    // Glue the compound statement and the postop tree
+    tree = makeASTNode(A_GLUE, bodyAST, NULL, postopAST, 0);
+
+    // Make a WHILE loop with the condition and this new body
+    tree = makeASTNode(A_WHILE, condAST, NULL, tree, 0);
+
+    return makeASTNode(A_GLUE, preopAST, NULL, tree, 0);
+}
+
+// Parse a single statement and return its AST
+static struct ASTNode *singleStatement() {
+    switch (Token_.token_) {
+        case T_PRINT :
+            return printStatement();
+        case T_INT:
+            varDeclaration();
+            return NULL;
+        case T_IDENT:
+            return assignmentStatement();
+        case T_IF:
+            return ifStatement();
+        case T_WHILE:
+            return whileStatement();
+        case T_FOR:
+            return forStatement();
+        default:
+            fatald("Syntax error, token", Token_.token_);
+    }
+}
+
 // Parse a compound statement and return its AST
 struct ASTNode *compoundStatement() {
     struct ASTNode *left = NULL;
@@ -137,40 +207,27 @@ struct ASTNode *compoundStatement() {
     lBrace();
 
     while (1) {
-        switch (Token_.token_) {
-            case T_PRINT:
-                tree = printStatement();
-                break;
-            case T_INT:
-                varDeclaration();
-                tree = NULL;
-                break;
-            case T_IDENT:
-                tree = assignmentStatement();
-                break;
-            case T_IF:
-                tree = ifStatement();
-                break;
-            case T_WHILE:
-                tree = whileStatement();
-                break;
-            case T_RBRACE:
-                // When we hit a right curly brace, skip past it and retrun the AST
-                rBrace();
-                return left;
+        tree = singleStatement();
 
-            default:
-                fatald("Syntax error, token", Token_.token_);
-        }
+        // Some statements must be followed by a semicolon
+        if (tree != NULL && (tree->op_ == A_PRINT || tree->op_ == A_ASSIGN))
+            semi();
+
 
         // For each new tree, either save it in left
         // if left is empty, or glue the left and the
         // new tree together
-        if (tree) {
+        if (tree != NULL) {
             if (left == NULL)
                 left = tree;
             else
                 left = makeASTNode(A_GLUE, left, NULL, tree, 0);
+        }
+        // When we hit a right curly bracket,
+        // skip past it and return the AST
+        if (Token_.token_ == T_RBRACE) {
+            rBrace();
+            return left;
         }
     }
 }
