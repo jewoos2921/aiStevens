@@ -153,6 +153,30 @@ Compiler/Cg_x86_64.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.s
 .PHONY : Compiler/Cg_x86_64.c.s
 
+Compiler/Decl.o: Compiler/Decl.c.o
+.PHONY : Compiler/Decl.o
+
+# target to build an object file
+Compiler/Decl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Decl.c.o
+.PHONY : Compiler/Decl.c.o
+
+Compiler/Decl.i: Compiler/Decl.c.i
+.PHONY : Compiler/Decl.i
+
+# target to preprocess a source file
+Compiler/Decl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Decl.c.i
+.PHONY : Compiler/Decl.c.i
+
+Compiler/Decl.s: Compiler/Decl.c.s
+.PHONY : Compiler/Decl.s
+
+# target to generate assembly for a file
+Compiler/Decl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Decl.c.s
+.PHONY : Compiler/Decl.c.s
+
 Compiler/Expr.o: Compiler/Expr.c.o
 .PHONY : Compiler/Expr.o
 
@@ -297,6 +321,30 @@ Compiler/Stmt.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Stmt.c.s
 .PHONY : Compiler/Stmt.c.s
 
+Compiler/Sym.o: Compiler/Sym.c.o
+.PHONY : Compiler/Sym.o
+
+# target to build an object file
+Compiler/Sym.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Sym.c.o
+.PHONY : Compiler/Sym.c.o
+
+Compiler/Sym.i: Compiler/Sym.c.i
+.PHONY : Compiler/Sym.i
+
+# target to preprocess a source file
+Compiler/Sym.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Sym.c.i
+.PHONY : Compiler/Sym.c.i
+
+Compiler/Sym.s: Compiler/Sym.c.s
+.PHONY : Compiler/Sym.s
+
+# target to generate assembly for a file
+Compiler/Sym.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Sym.c.s
+.PHONY : Compiler/Sym.c.s
+
 Compiler/Tree.o: Compiler/Tree.c.o
 .PHONY : Compiler/Tree.o
 
@@ -333,6 +381,9 @@ help:
 	@echo "... Compiler/Cg_x86_64.o"
 	@echo "... Compiler/Cg_x86_64.i"
 	@echo "... Compiler/Cg_x86_64.s"
+	@echo "... Compiler/Decl.o"
+	@echo "... Compiler/Decl.i"
+	@echo "... Compiler/Decl.s"
 	@echo "... Compiler/Expr.o"
 	@echo "... Compiler/Expr.i"
 	@echo "... Compiler/Expr.s"
@@ -351,6 +402,9 @@ help:
 	@echo "... Compiler/Stmt.o"
 	@echo "... Compiler/Stmt.i"
 	@echo "... Compiler/Stmt.s"
+	@echo "... Compiler/Sym.o"
+	@echo "... Compiler/Sym.i"
+	@echo "... Compiler/Sym.s"
 	@echo "... Compiler/Tree.o"
 	@echo "... Compiler/Tree.i"
 	@echo "... Compiler/Tree.s"

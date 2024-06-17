@@ -28,16 +28,14 @@ static int allocRegister() {
             return i;
         }
     }
-    fprintf(stderr, "Error: out of registers\n");
-    exit(1);
+    fatal("Out of registers");
 }
 
 // Return a register to the list of available registers.
 // Check to see if it's not already there.
 static void freeRegister(int reg) {
     if (freeReg_[reg]) {
-        fprintf(stderr, "Error: double free of register %d\n", reg);
-        exit(1);
+        fatald("Error trying to free register", reg);
     }
     freeReg_[reg] = 1;
 }
@@ -79,9 +77,15 @@ void cgPostamble() {
             OutFile_);
 }
 
-int cgLoad(int value_) {
+int cgLoadInt(int value_) {
     int r = allocRegister();
-    fprintf(OutFile_, "\tmov\t%d, %s\n", value_, regList_[r]);
+    fprintf(OutFile_, "\tmov\t%s, %d\n", regList_[r], value_);
+    return r;
+}
+
+int cgLoadGlobal(char *identifier_) {
+    int r = allocRegister();
+    fprintf(OutFile_, "\tmov\t%s, [%s]\n", regList_[r], identifier_);
     return r;
 }
 
@@ -119,3 +123,11 @@ void cgPrintInt(int r_) {
     freeRegister(r_);
 }
 
+int cgStorGlob(int r_, char *identifier_) {
+    fprintf(OutFile_, "\tmov\t[%s], %s\n", identifier_, regList_[r_]);
+    return r_;
+}
+
+void cgGlobSym(char *sym_) {
+    fprintf(OutFile_, "\tcommon\t%s 8:8\n", sym_);
+}

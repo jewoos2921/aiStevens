@@ -47,5 +47,5 @@ int main(int argc, char *argv[]) {
     statements();
     genPostamble();
     fclose(OutFile_);
-    return 0;
+    exit(0);
 }

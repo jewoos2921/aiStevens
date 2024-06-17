@@ -14,3 +14,4 @@ extern_ FILE *InFile_;
 extern_ FILE *OutFile_;
 extern_ struct Token Token_;
 extern_ char Text_[TEXTLEN + 1];
+extern_ struct symtable Gsym_[NSYMBOLS]; // Global symbol table

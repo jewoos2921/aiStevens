@@ -79,6 +79,12 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Decl.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Decl.h">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Expr.c">
 			<Option target="aiStevens"/>
 		</Unit>
@@ -95,6 +101,9 @@
 			<Option target="aiStevens"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Stmt.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Sym.c">
 			<Option target="aiStevens"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Tree.c">

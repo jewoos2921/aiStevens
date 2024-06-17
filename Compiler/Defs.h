@@ -10,7 +10,9 @@
 #include <ctype.h>
 
 
-#define TEXTLEN 512 // length of symbols in input
+#define TEXTLEN 512                     // length of symbols in input
+#define NSYMBOLS 1024                   // Number of symbol table entries
+
 
 // Tokens
 enum {
@@ -21,7 +23,11 @@ enum {
     T_SLASH,
     T_INTLIT,
     T_SEMI,
-    T_PRINT,
+    T_EQUALS,
+    T_IDENT,
+    // Keywords
+    T_PRINT, T_INT
+
 };
 
 struct Token {
@@ -35,7 +41,10 @@ enum {
     A_SUBTRACT,
     A_MULTIPLY,
     A_DIVIDE,
-    A_INTLIT
+    A_INTLIT,
+    A_IDENT,
+    A_LVIDENT,
+    A_ASSIGN,
 };
 
 // Abstract Syntax Tree structure
@@ -43,5 +52,12 @@ struct ASTNode {
     int op_; // operaiton to be performed on this tree
     struct ASTNode *left_;
     struct ASTNode *right_;
-    int int_value_;
+    union {
+        int int_value_; // for A_INTLIT
+        int id_; // for A_IDENT
+    } v_;
+};
+
+struct symtable {
+    char *name_;
 };

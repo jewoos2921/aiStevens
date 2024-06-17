@@ -15,14 +15,13 @@ struct ASTNode *makeASTNode(int op_,
 
 
     struct ASTNode *node = (struct ASTNode *) malloc(sizeof(struct ASTNode));
-    if (node == NULL) {
-        fprintf(stderr, "Unable to allocate memory for AST node\n");
-        exit(1);
-    }
+    if (node == NULL)
+        fatal("Unalbe to malloc in makeASTNode()");
+
     node->op_ = op_;
     node->left_ = left;
     node->right_ = right_;
-    node->int_value_ = int_value_;
+    node->v_.int_value_ = int_value_;
     return node;
 }
 

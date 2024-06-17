@@ -89,6 +89,11 @@ static int scanident(int c, char *buf, int lim) {
 
 static int keyword(char *s) {
     switch (*s) {
+        case 'i':
+            if (!strcmp(s, "int"))
+                return T_INT;
+            break;
+
         case 'p':
             if (!strcmp(s, "print"))
                 return T_PRINT;
@@ -102,7 +107,9 @@ int scan(struct Token *t_) {
     int c;
     int token_type;
 
+    // skip whitespace
     c = skip();
+
     switch (c) {
         case EOF:
             t_->token_ = T_EOF;
@@ -122,6 +129,9 @@ int scan(struct Token *t_) {
         case ';':
             t_->token_ = T_SEMI;
             break;
+        case '=':
+            t_->token_ = T_EQUALS;
+            break;
         default:
             if (isdigit(c)) {
                 t_->int_value_ = scanint(c);
@@ -138,14 +148,11 @@ int scan(struct Token *t_) {
                     break;
                 }
 
-                // Otherwise
-                printf("Unrecognised symbol %s on line %d\n", Text_, Line_);
-                exit(1);
+                t_->token_ = T_IDENT;
+                break;
             }
 
-            printf("Unrecognised character %c on line %d\n",
-                   c, Line_);
-            exit(1);
+            fatalc("Unrecognised character", c);
     }
     // We found a token
     return 1;

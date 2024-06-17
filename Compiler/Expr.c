@@ -6,23 +6,33 @@
 #include "Decl.h"
 
 
+// Parse a primary factor and return an AST node representing it.
 static struct ASTNode *primary() {
-    struct ASTNode *node;
+    struct ASTNode *node = NULL;
+    int id;
 
     switch (Token_.token_) {
         case T_INTLIT:
             node = makeASTLeaf(A_INTLIT, Token_.int_value_);
-            scan(&Token_);
             return node;
 
+        case T_IDENT:
+            id = findGlob(Text_);
+            if (id == -1)
+                fatals("undeclared variable", Text_);
+
+            node = makeASTLeaf(A_IDENT, id);
+            break;
+
         default:
-            fprintf(stderr, "syntax error on line %d\n", Line_);
-            exit(1);
+            fatald("Syntax error, token", Token_.token_);
     }
+    scan(&Token_);
+    return node;
 }
 
 // convert a binary operator token into an AST operation
-int arithop(int tokentype) {
+static int arithop(int tokentype) {
     switch (tokentype) {
         case T_PLUS:
             return A_ADD;
@@ -33,8 +43,7 @@ int arithop(int tokentype) {
         case T_SLASH:
             return A_DIVIDE;
         default:
-            fprintf(stderr, "syntax error on line %d\n", Line_);
-            exit(1);
+            fatald("Syntax error, token", tokentype);
     }
 }
 
@@ -46,8 +55,7 @@ static int OpPrec[] = {0, 10, 10, 20, 20, 0};
 static int op_precedence(int tokentype) {
     int prec = OpPrec[tokentype];
     if (prec == 0) {
-        fprintf(stderr, "syntax error, token %d\n", tokentype);
-        exit(1);
+        fatald("Syntax error, token", tokentype);
     }
     return prec;
 }
