@@ -79,6 +79,9 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/DB.c">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Decl.c">
 			<Option target="aiStevens"/>
 		</Unit>

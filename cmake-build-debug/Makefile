@@ -153,6 +153,30 @@ Compiler/Cg_x86_64.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.s
 .PHONY : Compiler/Cg_x86_64.c.s
 
+Compiler/DB.o: Compiler/DB.c.o
+.PHONY : Compiler/DB.o
+
+# target to build an object file
+Compiler/DB.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/DB.c.o
+.PHONY : Compiler/DB.c.o
+
+Compiler/DB.i: Compiler/DB.c.i
+.PHONY : Compiler/DB.i
+
+# target to preprocess a source file
+Compiler/DB.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/DB.c.i
+.PHONY : Compiler/DB.c.i
+
+Compiler/DB.s: Compiler/DB.c.s
+.PHONY : Compiler/DB.s
+
+# target to generate assembly for a file
+Compiler/DB.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/DB.c.s
+.PHONY : Compiler/DB.c.s
+
 Compiler/Decl.o: Compiler/Decl.c.o
 .PHONY : Compiler/Decl.o
 
@@ -381,6 +405,9 @@ help:
 	@echo "... Compiler/Cg_x86_64.o"
 	@echo "... Compiler/Cg_x86_64.i"
 	@echo "... Compiler/Cg_x86_64.s"
+	@echo "... Compiler/DB.o"
+	@echo "... Compiler/DB.i"
+	@echo "... Compiler/DB.s"
 	@echo "... Compiler/Decl.o"
 	@echo "... Compiler/Decl.i"
 	@echo "... Compiler/Decl.s"

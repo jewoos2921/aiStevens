@@ -40,10 +40,10 @@ static int arithop(int tokentype) {
 
 // Operator precedence for each token.
 static int OpPrec[] = {
-        0, 10, 10, // T_EOF, T_PLUS, T_MINUS
-        20, 20,         // T_STAR, T_SLASH
-        30, 30,             // T_EQ, T_NE
-        40, 40, 40, 40 // T_LT, T_GT, T_LE, T_GE
+        0, 10, 10,                                  // T_EOF, T_PLUS, T_MINUS
+        20, 20,                                         // T_STAR, T_SLASH
+        30, 30,                                         // T_EQ, T_NE
+        40, 40, 40, 40                         // T_LT, T_GT, T_LE, T_GE
 };
 
 // Check that we have a binary operator where we need to.

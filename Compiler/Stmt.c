@@ -24,7 +24,6 @@ static struct ASTNode *singleStatement();
 // print_statement: 'print' expression ';'  ;
 static struct ASTNode *printStatement() {
     struct ASTNode *tree;
-    int reg;
 
     match(T_PRINT, "print");
 

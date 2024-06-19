@@ -37,7 +37,9 @@ void freeAllRegisters();
 
 void cgPreamble();
 
-void cgPostamble();
+void cgFuncPreamble(char *name_);
+
+void cgFuncPostamble();
 
 int cgLoadInt(int value_);
 
@@ -101,3 +103,5 @@ int addGlob(char *name_);
 
 // Decl.c
 void varDeclaration();
+
+struct ASTNode *functionDeclaration();

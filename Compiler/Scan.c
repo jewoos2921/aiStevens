@@ -96,18 +96,31 @@ static int keyword(char *s) {
                 return T_ELSE;
             break;
 
+        case 'f':
+            if (!strcmp(s, "for"))
+                return T_FOR;
+            break;
+
         case 'i':
             if (!strcmp(s, "if"))
                 return T_IF;
             if (!strcmp(s, "int"))
                 return T_INT;
             break;
+
         case 'p':
             if (!strcmp(s, "print"))
                 return T_PRINT;
+            break;
+
         case 'w':
             if (!strcmp(s, "while"))
                 return T_WHILE;
+            break;
+
+        case 'v':
+            if (!strcmp(s, "void"))
+                return T_VOID;
             break;
     }
     return 0;

@@ -70,6 +70,10 @@ static int genWHILE(struct ASTNode *node_) {
     genAST(node_->left_, lEnd, node_->op_);
     genFreeRegs();
 
+    // Generate the compound statement for the body.
+    genAST(node_->right_, NOREG, node_->op_);
+    genFreeRegs();
+
     // Finally output the jump back to the condition, and the end label
     cgJump(lStart);
     cgLabel(lEnd);
@@ -95,6 +99,13 @@ int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
             genFreeRegs();
             genAST(node->right_, NOREG, node->op_);
             genFreeRegs();
+            return NOREG;
+
+        case A_FUNCTION:
+            // Generate the function's preamble before the code
+            cgFuncPreamble(Gsym_[node->v_.id_].name_);
+            genAST(node->left_, NOREG, node->op_);
+            cgFuncPostamble();
             return NOREG;
     }
 
@@ -151,10 +162,6 @@ int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
 
 void genPreamble() {
     cgPreamble();
-}
-
-void genPostamble() {
-    cgPostamble();
 }
 
 void genFreeRegs() {

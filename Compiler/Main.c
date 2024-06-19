@@ -45,9 +45,12 @@ int main(int argc, char *argv[]) {
 
     scan(&Token_);
     genPreamble();
-    tree = compoundStatement();
-    genAST(tree, NOREG, 0);
-    genPostamble();
+    while (1) {
+        tree = functionDeclaration();
+        genAST(tree, NOREG, 0);
+        if (Token_.token_ == T_EOF)
+            break;
+    }
     fclose(OutFile_);
     exit(0);
 }
