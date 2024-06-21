@@ -393,6 +393,30 @@ Compiler/Tree.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Tree.c.s
 .PHONY : Compiler/Tree.c.s
 
+Compiler/Types.o: Compiler/Types.c.o
+.PHONY : Compiler/Types.o
+
+# target to build an object file
+Compiler/Types.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Types.c.o
+.PHONY : Compiler/Types.c.o
+
+Compiler/Types.i: Compiler/Types.c.i
+.PHONY : Compiler/Types.i
+
+# target to preprocess a source file
+Compiler/Types.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Types.c.i
+.PHONY : Compiler/Types.c.i
+
+Compiler/Types.s: Compiler/Types.c.s
+.PHONY : Compiler/Types.s
+
+# target to generate assembly for a file
+Compiler/Types.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Types.c.s
+.PHONY : Compiler/Types.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -435,6 +459,9 @@ help:
 	@echo "... Compiler/Tree.o"
 	@echo "... Compiler/Tree.i"
 	@echo "... Compiler/Tree.s"
+	@echo "... Compiler/Types.o"
+	@echo "... Compiler/Types.i"
+	@echo "... Compiler/Types.s"
 .PHONY : help
 
 

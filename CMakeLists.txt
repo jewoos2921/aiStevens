@@ -17,6 +17,7 @@ add_executable(aiStevens
         Compiler/Decl.c
         Compiler/Sym.c
         Compiler/DB.c
+        Compiler/Types.c
         #        Compiler/Expr2.c
         #        data_element.c
         #        database.c

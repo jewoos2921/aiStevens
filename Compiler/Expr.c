@@ -13,33 +13,40 @@ static struct ASTNode *primary() {
 
     switch (Token_.token_) {
         case T_INTLIT:
-            node = makeASTLeaf(A_INTLIT, Token_.int_value_);
+            if ((Token_.int_value_) >= 0 && (Token_.int_value_ < 256))
+                node = makeASTLeaf(A_INTLIT, P_CHAR, Token_.int_value_);
+            else
+                node = makeASTLeaf(A_INTLIT, P_INT, Token_.int_value_);
             break;
 
         case T_IDENT:
+            // Check that this identifier exists
             id = findGlob(Text_);
             if (id == -1)
                 fatals("undeclared variable", Text_);
 
-            node = makeASTLeaf(A_IDENT, id);
+            // Make a leaf AST node for it
+            node = makeASTLeaf(A_IDENT, Gsym_[id].type_, id);
             break;
 
         default:
             fatald("Syntax error, token", Token_.token_);
     }
+
+    // Scan in the next token and return the leaf node
     scan(&Token_);
     return node;
 }
 
 // convert a binary operator token into an AST operation
-static int arithop(int tokentype) {
-    if (tokentype > T_EOF && tokentype < T_INTLIT)
-        return tokentype;
-    fatald("Syntax error, token", tokentype);
+static int arithop(int tokentype_) {
+    if (tokentype_ > T_EOF && tokentype_ < T_INTLIT)
+        return tokentype_;
+    fatald("Syntax error, token", tokentype_);
 }
 
 // Operator precedence for each token.
-static int OpPrec[] = {
+static int OpPrec_[] = {
         0, 10, 10,                                  // T_EOF, T_PLUS, T_MINUS
         20, 20,                                         // T_STAR, T_SLASH
         30, 30,                                         // T_EQ, T_NE
@@ -48,46 +55,62 @@ static int OpPrec[] = {
 
 // Check that we have a binary operator where we need to.
 // Return its precedence.
-static int op_precedence(int tokentype) {
-    int prec = OpPrec[tokentype];
+static int op_precedence(int tokentype_) {
+    int prec = OpPrec_[tokentype_];
     if (prec == 0) {
-        fatald("Syntax error, token", tokentype);
+        fatald("Syntax error, token", tokentype_);
     }
     return prec;
 }
 
 // return an AST tree whose root is a binary operator
 // Paramete ptp is the previous token's precedence.
-struct ASTNode *binexpr(int ptp) {
+struct ASTNode *binexpr(int ptp_) {
     struct ASTNode *left, *right;
-    int token_type;
+    int leftType, rightType;
+    int tokentype;
 
-    // get the left hand side
+    // get the primary tree on the left.
+    // Fetch the next token at the same time.
     left = primary();
 
-    // If no tokens left, return just the left node
-    token_type = Token_.token_;
-    if (token_type == T_SEMI || token_type == T_RPAREN)
+    // If we hit a semicolon or ')', return just the left node
+    tokentype = Token_.token_;
+    if (tokentype == T_SEMI || tokentype == T_RPAREN)
         return left;
 
 
     // While the precedence of this token is
     // more than that of the previous token precedence.
-    while (op_precedence(token_type) > ptp) {
+    while (op_precedence(tokentype) > ptp_) {
 
         // Fetch in the next integer literal
         scan(&Token_);
 
         // Recursively cll binexpr() with the
         // precedence of our token to build a sub-tree
-        right = binexpr(OpPrec[token_type]);
+        right = binexpr(OpPrec_[tokentype]);
 
-        // Make the AST node for the binary operator.
-        left = makeASTNode(arithop(token_type), left, NULL, right, 0);
+        // Ensure the two types are compatible
+        leftType = left->type_;
+        rightType = right->type_;
+        if (!typeCompatible(&leftType, &rightType, 0))
+            fatal("Incompatible types");
 
-        // Update the token type
-        token_type = Token_.token_;
-        if (token_type == T_EOF || token_type == T_RPAREN)
+
+        // Widen either side if required. type vars are A_WIDEN now
+        if (leftType)
+            left = makeASTUnary(leftType, right->type_, left, 0);
+        if (rightType)
+            right = makeASTUnary(rightType, left->type_, right, 0);
+
+        // Join that sub-tree with ours. Convert the token into an AST operation at the same time.
+        left = makeASTNode(arithop(tokentype), left->type_, left, NULL, right, 0);
+
+        // Update the details of the current token
+        // If we hit a semicolon or ')', return just the left node.
+        tokentype = Token_.token_;
+        if (tokentype == T_EOF || tokentype == T_RPAREN)
             return left;
     }
 

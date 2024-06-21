@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aiStevens.dir/Compiler/Sym.c.o.d"
   "CMakeFiles/aiStevens.dir/Compiler/Tree.c.o"
   "CMakeFiles/aiStevens.dir/Compiler/Tree.c.o.d"
+  "CMakeFiles/aiStevens.dir/Compiler/Types.c.o"
+  "CMakeFiles/aiStevens.dir/Compiler/Types.c.o.d"
   "aiStevens"
   "aiStevens.pdb"
 )

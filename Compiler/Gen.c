@@ -141,11 +141,11 @@ int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
                 return cgCompareAndSet(node->op_, leftreg, rightreg);
 
         case A_INTLIT:
-            return cgLoadInt(node->v_.int_value_);
+            return cgLoadInt(node->v_.int_value_, node->type_);
         case A_IDENT:
-            return cgLoadGlobal(Gsym_[node->v_.id_].name_);
+            return cgLoadGlobal(node->v_.id_);
         case A_LVIDENT:
-            return cgStorGlob(reg_, Gsym_[node->v_.id_].name_);
+            return cgStorGlob(reg_, node->v_.id_);
         case A_ASSIGN:
             // The work has aleady been done, return the result
             return rightreg;
@@ -155,6 +155,9 @@ int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
             genPrintInt(leftreg);
             genFreeRegs();
             return NOREG;
+        case A_WIDEN:
+            // Widen the child's type to the parent's type
+            return cgWiden(leftreg, node->left_->type_, node->type_);
         default:
             fatald("Unknown AST operator", node->op_);
     }
@@ -172,6 +175,6 @@ void genPrintInt(int reg_) {
     cgPrintInt(reg_);
 }
 
-void genGlobalSymbols(char *s_) {
-    cgGlobSym(s_);
+void genGlobalSymbols(int id_) {
+    cgGlobSym(id_);
 }

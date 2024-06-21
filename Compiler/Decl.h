@@ -7,15 +7,15 @@
 int scan(struct Token *t_);
 
 // Tree.c
-struct ASTNode *makeASTNode(int op_,
+struct ASTNode *makeASTNode(int op_, int type_,
                             struct ASTNode *left,
                             struct ASTNode *mid_,
                             struct ASTNode *right_,
                             int int_value_);
 
-struct ASTNode *makeASTLeaf(int op_, int int_value_);
+struct ASTNode *makeASTLeaf(int op_, int type_, int int_value_);
 
-struct ASTNode *makeASTUnary(int op_,
+struct ASTNode *makeASTUnary(int op_, int type_,
                              struct ASTNode *left_,
                              int int_value_);
 
@@ -30,7 +30,7 @@ void genFreeRegs();
 
 void genPrintInt(int reg_);
 
-void genGlobalSymbols(char *s_);
+void genGlobalSymbols(int id_);
 
 // Cg.c
 void freeAllRegisters();
@@ -41,9 +41,9 @@ void cgFuncPreamble(char *name_);
 
 void cgFuncPostamble();
 
-int cgLoadInt(int value_);
+int cgLoadInt(int value_, int type_);
 
-int cgLoadGlobal(char *identifier_);
+int cgLoadGlobal(int id_);
 
 int cgAdd(int r1_, int r2_);
 
@@ -55,9 +55,9 @@ int cgDiv(int r1_, int r2_);
 
 void cgPrintInt(int r_);
 
-int cgStorGlob(int r_, char *identifier_);
+int cgStorGlob(int r_, int id_);
 
-void cgGlobSym(char *sym_);
+void cgGlobSym(int id_);
 
 int cgCompareAndSet(int ASTop_, int r1_, int r2_);
 
@@ -66,6 +66,8 @@ int cgCompareAndJump(int ASTop_, int r1_, int r2_, int label_);
 void cgLabel(int label_);
 
 void cgJump(int label_);
+
+int cgWiden(int r_, int oldType_, int newType_);
 
 // Expr.c
 struct ASTNode *binexpr(int ptp_);
@@ -99,9 +101,12 @@ void fatalc(char *s_, int c_);
 // Sym.c
 int findGlob(char *s_);
 
-int addGlob(char *name_);
+int addGlob(char *name_, int type_, int stype_);
 
 // Decl.c
 void varDeclaration();
 
 struct ASTNode *functionDeclaration();
+
+// Types.c
+int typeCompatible(int *left_, int *right_, int onlyRight_);

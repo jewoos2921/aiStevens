@@ -63,33 +63,47 @@ void cgPreamble() {
             "\tnop\n"
             "\tleave\n"
             "\tret\n"
-            "\n"
-            "main:\n"
+            "\n",
+            OutFile_);
+}
+
+// Print out a function preamble
+void cgFuncPreamble(char *name_) {
+    fprintf(OutFile_,
+            "\tsection\t.text\n"
+            "\tglobal\t%s\n"
+            "%s:\n"
             "\tpush\trbp\n"
-            "\tmov	rbp, rsp\n",
-            OutFile_);
+            "\tmov\trbp, rsp\n", name_, name_);
 }
 
-// Print out the assembly postamble
-void cgPostamble() {
-    fputs(
-            "\tmov eax, 0\n"
-            "\tpop rbp\n"
-            "\tret\n",
-            OutFile_);
+// Print out a function postamble
+void cgFuncPostamble() {
+    fputs("\tmov   eax, 0\n"
+          "\tpop   rbp\n"
+          "\tret\n", OutFile_);
 }
 
-int cgLoadInt(int value_) {
+// Load an integer literal value into a register. Return the number of the register.
+// For x86-64, we don't need to worry about the type.
+int cgLoadInt(int value_, int type_) {
     int r = allocRegister();
     fprintf(OutFile_, "\tmov\t%s, %d\n", regList_[r], value_);
     return r;
 }
 
-int cgLoadGlobal(char *identifier_) {
+int cgLoadGlobal(int id_) {
     int r = allocRegister();
-    fprintf(OutFile_, "\tmov\t%s, [%s]\n", regList_[r], identifier_);
+
+    // Print out the code to initialise it: P_CHAR or P_INT
+    if (Gsym_[id_].type_ == P_INT)
+        fprintf(OutFile_, "\tmov\t%s, [%s]\n", regList_[r], Gsym_[id_].name_);
+    else
+        fprintf(OutFile_, "\tmovzx\t%s, byte [%s]\n",
+                regList_[r], Gsym_[id_].name_);
     return r;
 }
+
 
 int cgAdd(int r1_, int r2_) {
     fprintf(OutFile_, "\tadd\t%s, %s\n", regList_[r2_], regList_[r1_]);
@@ -125,14 +139,25 @@ void cgPrintInt(int r_) {
     freeRegister(r_);
 }
 
-int cgStorGlob(int r_, char *identifier_) {
-    fprintf(OutFile_, "\tmov\t[%s], %s\n", identifier_, regList_[r_]);
+// Store a register's value into a variable
+int cgStorGlob(int r_, int id_) {
+
+    // Choose P_INT or P_CHAR
+    if (Gsym_[id_].type_ == P_INT)
+        fprintf(OutFile_, "\tmov\t[%s], %s\n", Gsym_[id_].name_, regList_[r_]);
+    else
+        fprintf(OutFile_, "\tmov\t[%s], %s\n",
+                Gsym_[id_].name_, breList[r_]);
     return r_;
 }
 
 // Generate a global symbol
-void cgGlobSym(char *sym_) {
-    fprintf(OutFile_, "\tcommon\t%s 8:8\n", sym_);
+void cgGlobSym(int id_) {
+    // Choose P_INT or P_CHAR
+    if (Gsym_[id_].type_ == P_INT)
+        fprintf(OutFile_, "\tcommon\t%s 8:8\n", Gsym_[id_].name_);
+    else
+        fprintf(OutFile_, "\tcommon\t%s 1:1\n", Gsym_[id_].name_);
 }
 
 // List of comparison operators, indexed by ASTop values
@@ -175,4 +200,10 @@ int cgCompareAndJump(int ASTop_, int r1_, int r2_, int label_) {
     fprintf(OutFile_, "\t%s\tL%d\n", jumpList[ASTop_ - A_EQ], label_);
     freeAllRegisters();
     return NOREG;
+}
+
+// Widen the value in the register from the old to the new type. and return a register with this new value.
+int cgWiden(int r_, int oldType_, int newType_) {
+    // Nothing to do
+    return r_;
 }

@@ -112,6 +112,9 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Tree.c">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Types.c">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
