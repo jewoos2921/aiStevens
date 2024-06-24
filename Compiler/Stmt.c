@@ -24,24 +24,38 @@ static struct ASTNode *singleStatement();
 // print_statement: 'print' expression ';'  ;
 static struct ASTNode *printStatement() {
     struct ASTNode *tree;
+    int leftType, rightType;
+
 
     match(T_PRINT, "print");
 
     // Parse the following expression
     tree = binexpr(0);
+
+    // Ensure the two types are compatible
+    leftType = P_INT;
+    rightType = tree->type_;
+    if (!typeCompatible(&leftType, &rightType, 0)) {
+        fatal("Incompatible types");
+    }
+
+    if (rightType)
+        tree = makeASTUnary(rightType, P_INT, tree, 0);
+
     // Make a print AST tree
-    tree = makeASTUnary(A_PRINT, tree, 0);
+    tree = makeASTUnary(A_PRINT, P_NONE, tree, 0);
 
 
-    // Match the following semicolon
-    semi();
+    // Return the AST.
     return tree;
 }
 
 // assignment_statement: identifier '=' expression ';'   ;
+//
 static struct ASTNode *assignmentStatement() {
     struct ASTNode *left, *right, *tree;
     int id;
+    int leftType, rightType;
 
     // Ensure we have an identifier
     ident();
@@ -50,7 +64,7 @@ static struct ASTNode *assignmentStatement() {
     if ((id = findGlob(Text_)) == -1) {
         fatals("Undeclared varaibles", Text_);
     }
-    right = makeASTLeaf(A_LVIDENT, id);
+    right = makeASTLeaf(A_LVIDENT, Gsym_[id].type_, id);
 
     // Ensure we have an equals sign
     match(T_ASSIGN, "=");
@@ -58,11 +72,21 @@ static struct ASTNode *assignmentStatement() {
     // Parse the following expression
     left = binexpr(0);
 
-    // Make an assignment AST Tree
-    tree = makeASTNode(A_ASSIGN, left, NULL, right, 0);
+    // Ensure the two types are compatible
+    leftType = left->type_;
+    rightType = right->type_;
+    if (!typeCompatible(&leftType, &rightType, 1)) {
+        fatal("Incompatible types");
+    }
 
-    // Match the following semicolon
-    semi();
+    // Widen the left if required
+    if (leftType)
+        left = makeASTUnary(leftType, right->type_, left, 1);
+
+    // Make an assignment AST Tree
+    tree = makeASTNode(A_ASSIGN, P_INT, left, NULL, right, 0);
+
+    // Return the AST.
     return tree;
 }
 
@@ -100,7 +124,7 @@ static struct ASTNode *ifStatement() {
     }
 
     // Build and return the AST for this statement
-    return makeASTNode(A_IF, condAST, trueAST, falseAST, 0);
+    return makeASTNode(A_IF, P_NONE, condAST, trueAST, falseAST, 0);
 }
 
 // while_statement: 'while' '(' true_false_expression ')' compound_statement  ;
@@ -124,7 +148,7 @@ static struct ASTNode *whileStatement() {
     // Get the AST for the compound statement
     bodyAST = compoundStatement();
 
-    return makeASTNode(A_WHILE, condAST, NULL, bodyAST, 0);
+    return makeASTNode(A_WHILE, P_NONE, condAST, NULL, bodyAST, 0);
 }
 
 // for_statement: 'for' '(' preop_statement ';'
@@ -168,12 +192,12 @@ static struct ASTNode *forStatement() {
     // Later on, we'll change the semantics for when some are missing
 
     // Glue the compound statement and the postop tree
-    tree = makeASTNode(A_GLUE, bodyAST, NULL, postopAST, 0);
+    tree = makeASTNode(A_GLUE, P_NONE, bodyAST, NULL, postopAST, 0);
 
     // Make a WHILE loop with the condition and this new body
-    tree = makeASTNode(A_WHILE, condAST, NULL, tree, 0);
+    tree = makeASTNode(A_WHILE, P_NONE, condAST, NULL, tree, 0);
 
-    return makeASTNode(A_GLUE, preopAST, NULL, tree, 0);
+    return makeASTNode(A_GLUE, P_NONE, preopAST, NULL, tree, 0);
 }
 
 // Parse a single statement and return its AST
@@ -181,6 +205,8 @@ static struct ASTNode *singleStatement() {
     switch (Token_.token_) {
         case T_PRINT :
             return printStatement();
+
+        case T_CHAR:
         case T_INT:
             varDeclaration();
             return NULL;

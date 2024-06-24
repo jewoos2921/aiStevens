@@ -9,7 +9,7 @@
 
 
 // Build and returns a generic AST node
-struct ASTNode *makeASTNode(int op_,
+struct ASTNode *makeASTNode(int op_, int type_,
                             struct ASTNode *left, struct ASTNode *mid_, struct ASTNode *right_,
                             int int_value_) {
 
@@ -19,6 +19,7 @@ struct ASTNode *makeASTNode(int op_,
         fatal("Unalbe to malloc in makeASTNode()");
 
     node->op_ = op_;
+    node->type_ = type_;
     node->left_ = left;
     node->mid_ = mid_;
     node->right_ = right_;
@@ -26,12 +27,12 @@ struct ASTNode *makeASTNode(int op_,
     return node;
 }
 
-struct ASTNode *makeASTLeaf(int op_, int int_value_) {
-    return makeASTNode(op_, NULL, NULL, NULL, int_value_);
+struct ASTNode *makeASTLeaf(int op_, int type_, int int_value_) {
+    return makeASTNode(op_, type_, NULL, NULL, NULL, int_value_);
 }
 
-struct ASTNode *makeASTUnary(int op_,
+struct ASTNode *makeASTUnary(int op_, int type_,
                              struct ASTNode *left_,
                              int int_value_) {
-    return makeASTNode(op_, left_, NULL, NULL, int_value_);
+    return makeASTNode(op_, type_, left_, NULL, NULL, int_value_);
 }

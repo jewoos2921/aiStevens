@@ -91,6 +91,12 @@ static int scanident(int c, char *buf, int lim) {
 
 static int keyword(char *s) {
     switch (*s) {
+
+        case 'c':
+            if (!strcmp(s, "char"))
+                return T_CHAR;
+            break;
+
         case 'e':
             if (!strcmp(s, "else"))
                 return T_ELSE;
@@ -126,7 +132,8 @@ static int keyword(char *s) {
     return 0;
 }
 
-// Scan and return the next token
+// Scan and return the next token found in the input.
+// Return 1 if token valid, 0 if no tokens left.
 int scan(struct Token *t_) {
     int c;
     int token_type;
