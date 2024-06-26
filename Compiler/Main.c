@@ -43,6 +43,9 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
+    // For now, ensure that void printint() is defined
+    addGlob("printint", P_CHAR, S_FUNCTION, 0);
+
     scan(&Token_);
     genPreamble();
     while (1) {

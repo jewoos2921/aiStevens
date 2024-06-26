@@ -114,9 +114,19 @@ static int keyword(char *s) {
                 return T_INT;
             break;
 
+        case 'l':
+            if (!strcmp(s, "long"))
+                return T_LONG;
+            break;
+
         case 'p':
             if (!strcmp(s, "print"))
                 return T_PRINT;
+            break;
+
+        case 'r':
+            if (!strcmp(s, "return"))
+                return T_RETURN;
             break;
 
         case 'w':
@@ -132,11 +142,19 @@ static int keyword(char *s) {
     return 0;
 }
 
+static struct Token *RejectedToken = NULL;
+
 // Scan and return the next token found in the input.
 // Return 1 if token valid, 0 if no tokens left.
 int scan(struct Token *t_) {
     int c;
     int token_type;
+
+    if (RejectedToken != NULL) {
+        t_ = RejectedToken;
+        RejectedToken = NULL;
+        return 1;
+    }
 
     // skip whitespace
     c = skip();
@@ -227,4 +245,11 @@ int scan(struct Token *t_) {
     }
     // We found a token
     return 1;
+}
+
+// A pointer to a rejected token
+void rejectToken(struct Token *t_) {
+    if (RejectedToken != NULL)
+        fatal("only one token can be rejected");
+    RejectedToken = t_;
 }

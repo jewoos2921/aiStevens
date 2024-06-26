@@ -6,6 +6,28 @@
 #include "Decl.h"
 
 
+// Parse a function call with a single expression argument and return its AST.
+struct ASTNode *funcCall() {
+    struct ASTNode *tree;
+    int id;
+
+    if ((id = findGlob(Text_)) == -1) {
+        fatals("undeclared function", Text_);
+    }
+
+    // Get the '('
+    lParen();
+
+    // Parse the following expression
+    tree = binexpr(0);
+
+    tree = makeASTUnary(A_FUNCCALL, Gsym_[id].type_, tree, id);
+
+    // Ensure we have a ')'
+    rParen();
+    return tree;
+}
+
 // Parse a primary factor and return an AST node representing it.
 static struct ASTNode *primary() {
     struct ASTNode *node = NULL;
@@ -20,6 +42,18 @@ static struct ASTNode *primary() {
             break;
 
         case T_IDENT:
+
+            // This could be a variable or a function call.
+            // Scan in the next token to find out
+            scan(&Token_);
+
+            // It's a '(' so a function call
+            if (Token_.token_ == T_LPAREN)
+                return funcCall();
+
+            // Not a function call, so reject the new token
+            rejectToken(&Token_);
+
             // Check that this identifier exists
             id = findGlob(Text_);
             if (id == -1)
@@ -110,7 +144,7 @@ struct ASTNode *binexpr(int ptp_) {
         // Update the details of the current token
         // If we hit a semicolon or ')', return just the left node.
         tokentype = Token_.token_;
-        if (tokentype == T_EOF || tokentype == T_RPAREN)
+        if (tokentype == T_SEMI || tokentype == T_RPAREN)
             return left;
     }
 

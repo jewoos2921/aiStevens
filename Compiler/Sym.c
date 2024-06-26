@@ -33,7 +33,7 @@ static int newGlob() {
 // Add a global symbol to the symbol table.
 // Also set up its type and structural type.
 // Return the slot number in the symbol table
-int addGlob(char *name_, int type_, int stype_) {
+int addGlob(char *name_, int type_, int stype_, int endlabel_) {
     int y;
 
     // if this is already in the symbol table, return the existing slot
@@ -46,5 +46,6 @@ int addGlob(char *name_, int type_, int stype_) {
     Gsym_[y].name_ = strdup(name_);
     Gsym_[y].type_ = type_;
     Gsym_[y].stype_ = stype_;
+    Gsym_[y].endlabel_ = endlabel_;
     return y;
 }

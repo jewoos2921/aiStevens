@@ -17,9 +17,13 @@ static struct ASTNode *singleStatement();
 // statement: print_statement
 //      |     declaration
 //      |     assignment_statement
+//      |     function_call
 //      |     if_statement
 //      |     while_statement
+//      |     for_statement
+//      |     return_statement
 //      ;
+
 
 // print_statement: 'print' expression ';'  ;
 static struct ASTNode *printStatement() {
@@ -64,6 +68,7 @@ static struct ASTNode *assignmentStatement() {
     if ((id = findGlob(Text_)) == -1) {
         fatals("Undeclared varaibles", Text_);
     }
+
     right = makeASTLeaf(A_LVIDENT, Gsym_[id].type_, id);
 
     // Ensure we have an equals sign
@@ -200,6 +205,44 @@ static struct ASTNode *forStatement() {
     return makeASTNode(A_GLUE, P_NONE, preopAST, NULL, tree, 0);
 }
 
+// return_statement: 'return' '(' expression ')'  ;
+//
+// Parse a return statement and return its AST
+static struct ASTNode *returnStatement() {
+    struct ASTNode *tree;
+    int returnType, funcType;
+
+    // Can't return a value if function returns P_VOIDS
+    if (Gsym_[FunctionId_].type_ == P_VOID)
+        fatal("Can't return from a void function");
+
+    // Ensure we have 'return' '('
+    match(T_RETURN, "return");
+    lParen();
+
+    // Parse the following expression
+    tree = binexpr(0);
+
+    // ensure this is compatible with the function's return type
+    returnType = tree->type_;
+    funcType = Gsym_[FunctionId_].type_;
+    if (!typeCompatible(&funcType, &returnType, 1)) {
+        fatal("Incompatible types");
+    }
+
+    // Widen the left if required
+    if (returnType)
+        tree = makeASTUnary(returnType, funcType, tree, 0);
+
+    // Make a return AST tree
+    tree = makeASTUnary(A_RETURN, tree->type_, tree, 0);
+
+    // Get the ')'
+    rParen();
+    return tree;
+}
+
+// singleStatement: Parse a single statement and return its AST
 // Parse a single statement and return its AST
 static struct ASTNode *singleStatement() {
     switch (Token_.token_) {
@@ -208,6 +251,7 @@ static struct ASTNode *singleStatement() {
 
         case T_CHAR:
         case T_INT:
+        case T_LONG:
             varDeclaration();
             return NULL;
         case T_IDENT:
@@ -218,6 +262,8 @@ static struct ASTNode *singleStatement() {
             return whileStatement();
         case T_FOR:
             return forStatement();
+        case T_RETURN:
+            return returnStatement();
         default:
             fatald("Syntax error, token", Token_.token_);
     }
@@ -235,7 +281,8 @@ struct ASTNode *compoundStatement() {
         tree = singleStatement();
 
         // Some statements must be followed by a semicolon
-        if (tree != NULL && (tree->op_ == A_PRINT || tree->op_ == A_ASSIGN))
+        if (tree != NULL && (tree->op_ == A_PRINT || tree->op_ == A_ASSIGN ||
+                             tree->op_ == A_RETURN || tree->op_ == A_FUNCCALL))
             semi();
 
 
@@ -246,7 +293,7 @@ struct ASTNode *compoundStatement() {
             if (left == NULL)
                 left = tree;
             else
-                left = makeASTNode(A_GLUE, left, NULL, tree, 0);
+                left = makeASTNode(A_GLUE, P_NONE, left, NULL, tree, 0);
         }
         // When we hit a right curly bracket,
         // skip past it and return the AST

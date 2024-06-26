@@ -4,7 +4,11 @@
 
 #pragma once
 
+// Scan.c
+void rejectToken(struct Token *t_);
+
 int scan(struct Token *t_);
+
 
 // Tree.c
 struct ASTNode *makeASTNode(int op_, int type_,
@@ -20,6 +24,8 @@ struct ASTNode *makeASTUnary(int op_, int type_,
                              int int_value_);
 
 // Gen.c
+int genLabel();
+
 int genAST(struct ASTNode *node_, int reg_, int parentASTop_);
 
 void genPreamble();
@@ -32,14 +38,18 @@ void genPrintInt(int reg_);
 
 void genGlobalSymbols(int id_);
 
+int genPrimSize(int type_);
+
+void genReturn(int reg_, int id_);
+
 // Cg.c
 void freeAllRegisters();
 
 void cgPreamble();
 
-void cgFuncPreamble(char *name_);
+void cgFuncPreamble(int id_);
 
-void cgFuncPostamble();
+void cgFuncPostamble(int id_);
 
 int cgLoadInt(int value_, int type_);
 
@@ -55,6 +65,8 @@ int cgDiv(int r1_, int r2_);
 
 void cgPrintInt(int r_);
 
+int cgCall(int r_, int id_);
+
 int cgStorGlob(int r_, int id_);
 
 void cgGlobSym(int id_);
@@ -69,7 +81,14 @@ void cgJump(int label_);
 
 int cgWiden(int r_, int oldType_, int newType_);
 
+int cgPrimSize(int type_);
+
+void cgReturn(int reg_, int id_);
+
 // Expr.c
+
+struct ASTNode *funcCall();
+
 struct ASTNode *binexpr(int ptp_);
 
 // Stmt.c
@@ -101,7 +120,7 @@ void fatalc(char *s_, int c_);
 // Sym.c
 int findGlob(char *s_);
 
-int addGlob(char *name_, int type_, int stype_);
+int addGlob(char *name_, int type_, int stype_, int endlabel_);
 
 // Decl.c
 void varDeclaration();
