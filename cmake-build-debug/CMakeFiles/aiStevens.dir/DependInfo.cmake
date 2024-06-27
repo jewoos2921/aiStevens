@@ -20,6 +20,14 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Sym.c" "CMakeFiles/aiStevens.dir/Compiler/Sym.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/Sym.c.o.d"
   "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Tree.c" "CMakeFiles/aiStevens.dir/Compiler/Tree.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/Tree.c.o.d"
   "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Types.c" "CMakeFiles/aiStevens.dir/Compiler/Types.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/Types.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/analyze.c" "CMakeFiles/aiStevens.dir/YCompiler/analyze.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/analyze.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/cgen.c" "CMakeFiles/aiStevens.dir/YCompiler/cgen.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/cgen.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/main.c" "CMakeFiles/aiStevens.dir/YCompiler/main.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/main.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/parse.c" "CMakeFiles/aiStevens.dir/YCompiler/parse.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/parse.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/scan.c" "CMakeFiles/aiStevens.dir/YCompiler/scan.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/scan.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/symtab.c" "CMakeFiles/aiStevens.dir/YCompiler/symtab.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/symtab.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/tm.c" "CMakeFiles/aiStevens.dir/YCompiler/tm.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/tm.c.o.d"
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/util.c" "CMakeFiles/aiStevens.dir/YCompiler/util.c.o" "gcc" "CMakeFiles/aiStevens.dir/YCompiler/util.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

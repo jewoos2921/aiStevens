@@ -417,6 +417,198 @@ Compiler/Types.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/Types.c.s
 .PHONY : Compiler/Types.c.s
 
+YCompiler/analyze.o: YCompiler/analyze.c.o
+.PHONY : YCompiler/analyze.o
+
+# target to build an object file
+YCompiler/analyze.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/analyze.c.o
+.PHONY : YCompiler/analyze.c.o
+
+YCompiler/analyze.i: YCompiler/analyze.c.i
+.PHONY : YCompiler/analyze.i
+
+# target to preprocess a source file
+YCompiler/analyze.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/analyze.c.i
+.PHONY : YCompiler/analyze.c.i
+
+YCompiler/analyze.s: YCompiler/analyze.c.s
+.PHONY : YCompiler/analyze.s
+
+# target to generate assembly for a file
+YCompiler/analyze.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/analyze.c.s
+.PHONY : YCompiler/analyze.c.s
+
+YCompiler/cgen.o: YCompiler/cgen.c.o
+.PHONY : YCompiler/cgen.o
+
+# target to build an object file
+YCompiler/cgen.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/cgen.c.o
+.PHONY : YCompiler/cgen.c.o
+
+YCompiler/cgen.i: YCompiler/cgen.c.i
+.PHONY : YCompiler/cgen.i
+
+# target to preprocess a source file
+YCompiler/cgen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/cgen.c.i
+.PHONY : YCompiler/cgen.c.i
+
+YCompiler/cgen.s: YCompiler/cgen.c.s
+.PHONY : YCompiler/cgen.s
+
+# target to generate assembly for a file
+YCompiler/cgen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/cgen.c.s
+.PHONY : YCompiler/cgen.c.s
+
+YCompiler/main.o: YCompiler/main.c.o
+.PHONY : YCompiler/main.o
+
+# target to build an object file
+YCompiler/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/main.c.o
+.PHONY : YCompiler/main.c.o
+
+YCompiler/main.i: YCompiler/main.c.i
+.PHONY : YCompiler/main.i
+
+# target to preprocess a source file
+YCompiler/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/main.c.i
+.PHONY : YCompiler/main.c.i
+
+YCompiler/main.s: YCompiler/main.c.s
+.PHONY : YCompiler/main.s
+
+# target to generate assembly for a file
+YCompiler/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/main.c.s
+.PHONY : YCompiler/main.c.s
+
+YCompiler/parse.o: YCompiler/parse.c.o
+.PHONY : YCompiler/parse.o
+
+# target to build an object file
+YCompiler/parse.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/parse.c.o
+.PHONY : YCompiler/parse.c.o
+
+YCompiler/parse.i: YCompiler/parse.c.i
+.PHONY : YCompiler/parse.i
+
+# target to preprocess a source file
+YCompiler/parse.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/parse.c.i
+.PHONY : YCompiler/parse.c.i
+
+YCompiler/parse.s: YCompiler/parse.c.s
+.PHONY : YCompiler/parse.s
+
+# target to generate assembly for a file
+YCompiler/parse.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/parse.c.s
+.PHONY : YCompiler/parse.c.s
+
+YCompiler/scan.o: YCompiler/scan.c.o
+.PHONY : YCompiler/scan.o
+
+# target to build an object file
+YCompiler/scan.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/scan.c.o
+.PHONY : YCompiler/scan.c.o
+
+YCompiler/scan.i: YCompiler/scan.c.i
+.PHONY : YCompiler/scan.i
+
+# target to preprocess a source file
+YCompiler/scan.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/scan.c.i
+.PHONY : YCompiler/scan.c.i
+
+YCompiler/scan.s: YCompiler/scan.c.s
+.PHONY : YCompiler/scan.s
+
+# target to generate assembly for a file
+YCompiler/scan.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/scan.c.s
+.PHONY : YCompiler/scan.c.s
+
+YCompiler/symtab.o: YCompiler/symtab.c.o
+.PHONY : YCompiler/symtab.o
+
+# target to build an object file
+YCompiler/symtab.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/symtab.c.o
+.PHONY : YCompiler/symtab.c.o
+
+YCompiler/symtab.i: YCompiler/symtab.c.i
+.PHONY : YCompiler/symtab.i
+
+# target to preprocess a source file
+YCompiler/symtab.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/symtab.c.i
+.PHONY : YCompiler/symtab.c.i
+
+YCompiler/symtab.s: YCompiler/symtab.c.s
+.PHONY : YCompiler/symtab.s
+
+# target to generate assembly for a file
+YCompiler/symtab.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/symtab.c.s
+.PHONY : YCompiler/symtab.c.s
+
+YCompiler/tm.o: YCompiler/tm.c.o
+.PHONY : YCompiler/tm.o
+
+# target to build an object file
+YCompiler/tm.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/tm.c.o
+.PHONY : YCompiler/tm.c.o
+
+YCompiler/tm.i: YCompiler/tm.c.i
+.PHONY : YCompiler/tm.i
+
+# target to preprocess a source file
+YCompiler/tm.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/tm.c.i
+.PHONY : YCompiler/tm.c.i
+
+YCompiler/tm.s: YCompiler/tm.c.s
+.PHONY : YCompiler/tm.s
+
+# target to generate assembly for a file
+YCompiler/tm.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/tm.c.s
+.PHONY : YCompiler/tm.c.s
+
+YCompiler/util.o: YCompiler/util.c.o
+.PHONY : YCompiler/util.o
+
+# target to build an object file
+YCompiler/util.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/util.c.o
+.PHONY : YCompiler/util.c.o
+
+YCompiler/util.i: YCompiler/util.c.i
+.PHONY : YCompiler/util.i
+
+# target to preprocess a source file
+YCompiler/util.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/util.c.i
+.PHONY : YCompiler/util.c.i
+
+YCompiler/util.s: YCompiler/util.c.s
+.PHONY : YCompiler/util.s
+
+# target to generate assembly for a file
+YCompiler/util.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/util.c.s
+.PHONY : YCompiler/util.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -462,6 +654,30 @@ help:
 	@echo "... Compiler/Types.o"
 	@echo "... Compiler/Types.i"
 	@echo "... Compiler/Types.s"
+	@echo "... YCompiler/analyze.o"
+	@echo "... YCompiler/analyze.i"
+	@echo "... YCompiler/analyze.s"
+	@echo "... YCompiler/cgen.o"
+	@echo "... YCompiler/cgen.i"
+	@echo "... YCompiler/cgen.s"
+	@echo "... YCompiler/main.o"
+	@echo "... YCompiler/main.i"
+	@echo "... YCompiler/main.s"
+	@echo "... YCompiler/parse.o"
+	@echo "... YCompiler/parse.i"
+	@echo "... YCompiler/parse.s"
+	@echo "... YCompiler/scan.o"
+	@echo "... YCompiler/scan.i"
+	@echo "... YCompiler/scan.s"
+	@echo "... YCompiler/symtab.o"
+	@echo "... YCompiler/symtab.i"
+	@echo "... YCompiler/symtab.s"
+	@echo "... YCompiler/tm.o"
+	@echo "... YCompiler/tm.i"
+	@echo "... YCompiler/tm.s"
+	@echo "... YCompiler/util.o"
+	@echo "... YCompiler/util.i"
+	@echo "... YCompiler/util.s"
 .PHONY : help
 
 

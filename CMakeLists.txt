@@ -18,6 +18,14 @@ add_executable(aiStevens
         Compiler/Sym.c
         Compiler/DB.c
         Compiler/Types.c
+        YCompiler/main.c
+        YCompiler/util.c
+        YCompiler/scan.c
+        YCompiler/cgen.c
+        YCompiler/parse.c
+        YCompiler/symtab.c
+        YCompiler/tm.c
+        YCompiler/analyze.c
         #        Compiler/Expr2.c
         #        data_element.c
         #        database.c

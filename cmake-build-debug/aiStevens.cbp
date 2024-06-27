@@ -115,6 +115,48 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Types.c">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/analyze.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/analyze.h">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/cgen.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/cgen.h">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/main.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/parse.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/parse.h">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/scan.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/scan.h">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/symtab.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/symtab.h">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/tm.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/util.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/util.h">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
