@@ -465,6 +465,30 @@ YCompiler/cgen.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/cgen.c.s
 .PHONY : YCompiler/cgen.c.s
 
+YCompiler/code.o: YCompiler/code.c.o
+.PHONY : YCompiler/code.o
+
+# target to build an object file
+YCompiler/code.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/code.c.o
+.PHONY : YCompiler/code.c.o
+
+YCompiler/code.i: YCompiler/code.c.i
+.PHONY : YCompiler/code.i
+
+# target to preprocess a source file
+YCompiler/code.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/code.c.i
+.PHONY : YCompiler/code.c.i
+
+YCompiler/code.s: YCompiler/code.c.s
+.PHONY : YCompiler/code.s
+
+# target to generate assembly for a file
+YCompiler/code.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/YCompiler/code.c.s
+.PHONY : YCompiler/code.c.s
+
 YCompiler/main.o: YCompiler/main.c.o
 .PHONY : YCompiler/main.o
 
@@ -660,6 +684,9 @@ help:
 	@echo "... YCompiler/cgen.o"
 	@echo "... YCompiler/cgen.i"
 	@echo "... YCompiler/cgen.s"
+	@echo "... YCompiler/code.o"
+	@echo "... YCompiler/code.i"
+	@echo "... YCompiler/code.s"
 	@echo "... YCompiler/main.o"
 	@echo "... YCompiler/main.i"
 	@echo "... YCompiler/main.s"

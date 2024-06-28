@@ -127,6 +127,12 @@
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/cgen.h">
 			<Option target="aiStevens"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/code.c">
+			<Option target="aiStevens"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/code.h">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/YCompiler/main.c">
 			<Option target="aiStevens"/>
 		</Unit>

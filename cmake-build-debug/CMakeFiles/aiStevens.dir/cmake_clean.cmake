@@ -27,6 +27,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aiStevens.dir/YCompiler/analyze.c.o.d"
   "CMakeFiles/aiStevens.dir/YCompiler/cgen.c.o"
   "CMakeFiles/aiStevens.dir/YCompiler/cgen.c.o.d"
+  "CMakeFiles/aiStevens.dir/YCompiler/code.c.o"
+  "CMakeFiles/aiStevens.dir/YCompiler/code.c.o.d"
   "CMakeFiles/aiStevens.dir/YCompiler/main.c.o"
   "CMakeFiles/aiStevens.dir/YCompiler/main.c.o.d"
   "CMakeFiles/aiStevens.dir/YCompiler/parse.c.o"
