@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/CG_ARM.c" "CMakeFiles/aiStevens.dir/Compiler/CG_ARM.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/CG_ARM.c.o.d"
   "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c" "CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/Cg_x86_64.c.o.d"
   "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/DB.c" "CMakeFiles/aiStevens.dir/Compiler/DB.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/DB.c.o.d"
   "/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Decl.c" "CMakeFiles/aiStevens.dir/Compiler/Decl.c.o" "gcc" "CMakeFiles/aiStevens.dir/Compiler/Decl.c.o.d"

@@ -88,7 +88,10 @@ static int scanident(int c, char *buf, int lim) {
     return i;
 }
 
-
+// Given a word from the input, return the matching
+// keyword token number or 0 if it's not a keyword.
+// Switch on the first letter so that we don't have
+// to waste time strcmp()ing against all the keywords.
 static int keyword(char *s) {
     switch (*s) {
 
@@ -143,6 +146,13 @@ static int keyword(char *s) {
 }
 
 static struct Token *RejectedToken = NULL;
+
+// A pointer to a rejected token
+void rejectToken(struct Token *t_) {
+    if (RejectedToken != NULL)
+        fatal("only one token can be rejected");
+    RejectedToken = t_;
+}
 
 // Scan and return the next token found in the input.
 // Return 1 if token valid, 0 if no tokens left.
@@ -221,7 +231,9 @@ int scan(struct Token *t_) {
                 t_->token_ = T_GT;
             }
             break;
+
         default:
+            // If it's a digit, scan the literal integer value in
             if (isdigit(c)) {
                 t_->int_value_ = scanint(c);
                 t_->token_ = T_INTLIT;
@@ -245,11 +257,4 @@ int scan(struct Token *t_) {
     }
     // We found a token
     return 1;
-}
-
-// A pointer to a rejected token
-void rejectToken(struct Token *t_) {
-    if (RejectedToken != NULL)
-        fatal("only one token can be rejected");
-    RejectedToken = t_;
 }

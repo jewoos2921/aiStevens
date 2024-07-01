@@ -77,6 +77,7 @@ static int arithop(int tokentype_) {
     if (tokentype_ > T_EOF && tokentype_ < T_INTLIT)
         return tokentype_;
     fatald("Syntax error, token", tokentype_);
+    return 0;
 }
 
 // Operator precedence for each token.
@@ -139,7 +140,8 @@ struct ASTNode *binexpr(int ptp_) {
             right = makeASTUnary(rightType, left->type_, right, 0);
 
         // Join that sub-tree with ours. Convert the token into an AST operation at the same time.
-        left = makeASTNode(arithop(tokentype), left->type_, left, NULL, right, 0);
+        left = makeASTNode(arithop(tokentype),
+                           left->type_, left, NULL, right, 0);
 
         // Update the details of the current token
         // If we hit a semicolon or ')', return just the left node.

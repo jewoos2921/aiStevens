@@ -15,6 +15,7 @@ static int parseType(int t_) {
     if (t_ == T_LONG) return (P_LONG);
     if (t_ == T_VOID) return (P_VOID);
     fatald("Illegal type, token", t_);
+    return 0;
 }
 
 // declaration: 'int' identifier ';'  ;
@@ -55,9 +56,10 @@ struct ASTNode *functionDeclaration() {
     // to the symbol table, and set the Functionid global
     // to the function's symbol-id
     endLabel = genLabel();
-    nameSlot = addGlob(Text_, type, P_VOID, S_FUNCTION);
+    nameSlot = addGlob(Text_, type, S_FUNCTION, endLabel);
     FunctionId_ = nameSlot;
 
+    // Scan in the parentheses
     lParen();
     lParen();
 
@@ -75,5 +77,5 @@ struct ASTNode *functionDeclaration() {
     }
 
     // Return an A_FUNCTION node which has the function's nameslot and the compound statement sub-tree
-    return makeASTUnary(A_FUNCTION, P_VOID, tree, nameSlot);
+    return makeASTUnary(A_FUNCTION, type, tree, nameSlot);
 }

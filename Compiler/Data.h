@@ -11,6 +11,7 @@
 extern_ int Line_;
 extern_ int PutBack_;
 extern_ int FunctionId_; // Symbol id of the current function
+extern_ int Globs_; // Position of next free global symbol slot
 extern_ FILE *InFile_;
 extern_ FILE *OutFile_;
 extern_ struct Token Token_;

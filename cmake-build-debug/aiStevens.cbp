@@ -76,6 +76,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/CG_ARM.c">
+			<Option target="aiStevens"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/jewoo/CLionProjects/aiStevens/Compiler/Cg_x86_64.c">
 			<Option target="aiStevens"/>
 		</Unit>

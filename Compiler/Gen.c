@@ -9,7 +9,7 @@
 // Generic code generator
 
 // Generate and return a new label number
-static int label() {
+int genLabel() {
     static int id = 1;
     return id++;
 }
@@ -23,9 +23,9 @@ static int genIfAST(struct ASTNode *node_) {
     // for the end of the overall IF statement.
     // When there is no ELSE clause, Lfalse _is_
     // the ending label!
-    lFalse = label();
+    lFalse = genLabel();
     if (node_->right_)
-        lEnd = label();
+        lEnd = genLabel();
 
     // Generate the condition code followed
     // by a zero jump to the false label.
@@ -60,8 +60,8 @@ static int genWHILE(struct ASTNode *node_) {
 
     // Generate the start and end labels
     // and ouput the start label
-    lStart = label();
-    lEnd = label();
+    lStart = genLabel();
+    lEnd = genLabel();
     cgLabel(lStart);
 
     // Generate the condition code followed
@@ -170,6 +170,10 @@ int genAST(struct ASTNode *node, int reg_, int parentASTop_) {
 
 void genPreamble() {
     cgPreamble();
+}
+
+void genPostamble() {
+    cgPostamble();
 }
 
 void genFreeRegs() {

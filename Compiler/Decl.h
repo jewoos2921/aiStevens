@@ -47,6 +47,8 @@ void freeAllRegisters();
 
 void cgPreamble();
 
+void cgPostamble();
+
 void cgFuncPreamble(int id_);
 
 void cgFuncPostamble(int id_);

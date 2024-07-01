@@ -27,6 +27,7 @@ add_executable(aiStevens
         YCompiler/tm.c
         YCompiler/analyze.c
         YCompiler/code.c
+        Compiler/CG_ARM.c
         #        Compiler/Expr2.c
         #        data_element.c
         #        database.c

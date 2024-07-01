@@ -33,6 +33,7 @@ static int allocRegister() {
         }
     }
     fatal("Out of registers");
+    return NOREG;
 }
 
 // Return a register to the list of available registers.
@@ -48,6 +49,12 @@ static void freeRegister(int reg) {
 void cgPreamble() {
     freeAllRegisters();
     fputs("\textern\tprintint\n", OutFile_);
+}
+
+// Nothing to do
+void cgPostamble() {
+//    fputs("\tsection\t.data\n"
+//          "\tformat	db \"%ld \", 10, 0\n", OutFile_);
 }
 
 // Print out a function preamble

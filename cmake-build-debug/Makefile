@@ -129,6 +129,30 @@ aiStevens/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/build
 .PHONY : aiStevens/fast
 
+Compiler/CG_ARM.o: Compiler/CG_ARM.c.o
+.PHONY : Compiler/CG_ARM.o
+
+# target to build an object file
+Compiler/CG_ARM.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/CG_ARM.c.o
+.PHONY : Compiler/CG_ARM.c.o
+
+Compiler/CG_ARM.i: Compiler/CG_ARM.c.i
+.PHONY : Compiler/CG_ARM.i
+
+# target to preprocess a source file
+Compiler/CG_ARM.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/CG_ARM.c.i
+.PHONY : Compiler/CG_ARM.c.i
+
+Compiler/CG_ARM.s: Compiler/CG_ARM.c.s
+.PHONY : Compiler/CG_ARM.s
+
+# target to generate assembly for a file
+Compiler/CG_ARM.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aiStevens.dir/build.make CMakeFiles/aiStevens.dir/Compiler/CG_ARM.c.s
+.PHONY : Compiler/CG_ARM.c.s
+
 Compiler/Cg_x86_64.o: Compiler/Cg_x86_64.c.o
 .PHONY : Compiler/Cg_x86_64.o
 
@@ -642,6 +666,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aiStevens"
+	@echo "... Compiler/CG_ARM.o"
+	@echo "... Compiler/CG_ARM.i"
+	@echo "... Compiler/CG_ARM.s"
 	@echo "... Compiler/Cg_x86_64.o"
 	@echo "... Compiler/Cg_x86_64.i"
 	@echo "... Compiler/Cg_x86_64.s"

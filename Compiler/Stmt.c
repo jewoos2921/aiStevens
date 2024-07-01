@@ -64,6 +64,11 @@ static struct ASTNode *assignmentStatement() {
     // Ensure we have an identifier
     ident();
 
+    // This could be a variable or a function call.
+    // If next token is '(', it's a function call
+    if (Token_.token_ == T_LPAREN)
+        return funcCall();
+
     // Check it's been defined then make a leaf node for it
     if ((id = findGlob(Text_)) == -1) {
         fatals("Undeclared varaibles", Text_);
@@ -86,7 +91,7 @@ static struct ASTNode *assignmentStatement() {
 
     // Widen the left if required
     if (leftType)
-        left = makeASTUnary(leftType, right->type_, left, 1);
+        left = makeASTUnary(leftType, right->type_, left, 0);
 
     // Make an assignment AST Tree
     tree = makeASTNode(A_ASSIGN, P_INT, left, NULL, right, 0);
@@ -235,7 +240,7 @@ static struct ASTNode *returnStatement() {
         tree = makeASTUnary(returnType, funcType, tree, 0);
 
     // Make a return AST tree
-    tree = makeASTUnary(A_RETURN, tree->type_, tree, 0);
+    tree = makeASTUnary(A_RETURN, P_NONE, tree, 0);
 
     // Get the ')'
     rParen();
